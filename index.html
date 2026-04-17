@@ -1,374 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>World Harvest Church — Miracles · Breakthrough · Revival</title>
-  <meta name="description" content="A house of miracles for every generation. Join Pastor Rod Parsley at World Harvest Church — Sundays 10 AM | Wednesdays 7 PM in Canal Winchester, OH." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --purple:       #573198;
-      --purple-light: #7B55C0;
-      --purple-dark:  #3B1F6A;
-      --purple-faint: rgba(87,49,152,0.12);
-      --purple-glow:  rgba(87,49,152,0.38);
-      --deep:   #09070F;
-      --dark:   #10101A;
-      --mid:    #1C1C2E;
-      --smoke:  #F5F4FA;
-      --white:  #FFFFFF;
-      --text:   #1A1A2E;
-      --muted:  #6B6B88;
-      --nav-h:  72px;
-      --ease-smooth: cubic-bezier(0.25,0.46,0.45,0.94);
-      --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --smoke: #12121E;
-        --white: #1C1C2E;
-        --text:  #EEEAF8;
-        --muted: #9090B0;
-        --mid:   #22223A;
-      }
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;font-size:16px}
-    body{font-family:'Barlow',sans-serif;background:var(--smoke);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-    img{display:block;max-width:100%}
-    a{text-decoration:none;color:inherit}
-    button{cursor:pointer;border:none;background:none;font-family:inherit}
-    .container{width:min(1200px,100% - 32px);margin-inline:auto}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>World Harvest Church — Miracles · Breakthrough · Revival</title>
+<meta name="description" content="A house of miracles for every generation. Join Pastor Rod Parsley at World Harvest Church — Sundays 10 AM | Wednesdays 7 PM in Canal Winchester, OH."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<style>
+/* ─── VARIABLES ─── */
+:root{
+  --purple:#573198;--purple-light:#7B55C0;--purple-dark:#3B1F6A;
+  --purple-faint:rgba(87,49,152,.12);--purple-glow:rgba(87,49,152,.38);
+  --deep:#09070F;--dark:#10101A;--mid:#1C1C2E;
+  --smoke:#F5F4FA;--white:#FFFFFF;--text:#1A1A2E;--muted:#6B6B88;
+  --nav-h:72px;
+  --ease:cubic-bezier(.25,.46,.45,.94);--spring:cubic-bezier(.34,1.56,.64,1);
+}
+@media(prefers-color-scheme:dark){
+  :root{--smoke:#12121E;--white:#1C1C2E;--text:#EEEAF8;--muted:#9090B0;--mid:#22223A}
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Barlow',sans-serif;background:var(--smoke);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+.container{width:min(1200px,100% - 32px);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-    /* NAV */
-    #nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);display:flex;align-items:center;padding:0 28px;transition:background .4s var(--ease-smooth),backdrop-filter .4s}
-    #nav.scrolled{background:rgba(8,5,18,.93);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid rgba(87,49,152,.22)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:16px}
-    .nav-logo{display:flex;align-items:center;flex-shrink:0}
-    .nav-logo img{height:42px;width:auto;filter:brightness(0) invert(1);transition:opacity .2s}
-    .nav-logo img:hover{opacity:.85}
-    .nav-links{display:flex;align-items:center;gap:2px;list-style:none}
-    .nav-links a{font-size:13px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.72);padding:6px 12px;border-radius:4px;transition:color .2s,background .2s;white-space:nowrap}
-    .nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
-    .nav-cta{display:flex;align-items:center;gap:10px;flex-shrink:0}
-    .btn-watch-live{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--purple);padding:10px 18px;border-radius:4px;transition:background .2s,transform .2s var(--ease-spring);display:flex;align-items:center;gap:7px;white-space:nowrap}
-    .btn-watch-live:hover{background:var(--purple-light);transform:translateY(-1px)}
-    .btn-watch-live::before{content:'';width:7px;height:7px;border-radius:50%;background:#fff;animation:pulseDot 1.6s ease infinite}
-    @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+/* ─── NAV ─── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--nav-h);display:flex;align-items:center;padding:0 24px;transition:background .4s var(--ease)}
+#nav.scrolled{background:rgba(8,5,18,.94);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);border-bottom:1px solid rgba(87,49,152,.22)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px}
+.nav-logo{display:flex;align-items:center;flex-shrink:0}
+.nav-logo img{height:40px;width:auto;filter:brightness(0) invert(1);transition:opacity .2s}
+.nav-logo img:hover{opacity:.85}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.72);padding:6px 11px;border-radius:4px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+/* Search */
+.nav-search-btn{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:14px;transition:all .2s;flex-shrink:0}
+.nav-search-btn:hover{background:rgba(87,49,152,.3);border-color:var(--purple-light);color:#fff}
+/* Search overlay */
+#search-overlay{position:fixed;inset:0;z-index:400;background:rgba(9,7,18,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:120px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+#search-overlay.open{opacity:1;pointer-events:all}
+.search-inner{width:min(680px,100% - 40px)}
+.search-heading{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:20px;text-align:center;letter-spacing:.05em}
+.search-bar{position:relative;margin-bottom:24px}
+.search-bar input{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(87,49,152,.4);border-radius:8px;padding:16px 52px 16px 20px;font-family:'Barlow',sans-serif;font-size:16px;color:#fff;outline:none;transition:border-color .2s}
+.search-bar input:focus{border-color:var(--purple-light)}
+.search-bar input::placeholder{color:rgba(255,255,255,.3)}
+.search-bar button{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.4);font-size:16px;transition:color .2s}
+.search-bar button:hover{color:var(--purple-light)}
+.search-close{position:absolute;top:24px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:16px;transition:all .2s}
+.search-close:hover{background:rgba(87,49,152,.3);color:#fff}
+.search-suggestions{background:rgba(255,255,255,.05);border:1px solid rgba(87,49,152,.25);border-radius:8px;overflow:hidden}
+.search-sug-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:14px 18px 8px}
+.search-sug-item{display:flex;align-items:center;gap:12px;padding:11px 18px;color:rgba(255,255,255,.7);font-size:14px;cursor:pointer;transition:background .2s,color .2s;border-top:1px solid rgba(255,255,255,.04)}
+.search-sug-item:hover,.search-sug-item.active{background:rgba(87,49,152,.2);color:#fff}
+.search-sug-item i{color:var(--purple-light);width:16px;font-size:13px}
+/* Live button */
+.btn-watch-live{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--purple);padding:9px 16px;border-radius:4px;transition:background .2s,transform .2s var(--spring);display:flex;align-items:center;gap:7px;white-space:nowrap}
+.btn-watch-live:hover{background:var(--purple-light);transform:translateY(-1px)}
+.btn-watch-live::before{content:'';width:7px;height:7px;border-radius:50%;background:#fff;animation:pDot 1.6s ease infinite}
+@keyframes pDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+/* Hamburger */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;padding:8px;width:40px;height:40px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .35s var(--ease),opacity .25s;transform-origin:center}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* Mobile Drawer */
+#mob-drawer{position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:290;background:rgba(9,7,18,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transform:translateY(-100%);transition:transform .4s var(--ease),opacity .35s;opacity:0;pointer-events:none}
+#mob-drawer.open{transform:translateY(0);opacity:1;pointer-events:all}
+.mob-link{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:rgba(255,255,255,.76);padding:8px 28px;border-radius:6px;transition:color .2s,background .2s;text-align:center}
+.mob-link:hover{color:#fff;background:rgba(87,49,152,.2)}
+.mob-cta{margin-top:16px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:var(--purple);padding:12px 32px;border-radius:4px;transition:background .2s}
+.mob-cta:hover{background:var(--purple-light)}
 
-    /* Hamburger */
-    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;padding:8px;width:42px;height:42px}
-    .nav-hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .35s var(--ease-smooth),opacity .25s;transform-origin:center}
-    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-    .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
-    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* ─── HERO ─── */
+#hero{position:relative;height:100vh;min-height:580px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-vid-wrap{position:absolute;inset:0;z-index:0}
+.hero-vid-wrap video{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(10,6,26,.82) 0%,rgba(15,10,38,.48) 50%,rgba(10,6,26,.72) 100%)}
+.hero-grain{position:absolute;inset:0;z-index:2;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px}
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 18px;max-width:940px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:26px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--purple-light)}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';height:1px;width:34px;background:var(--purple-light);opacity:.65}
+.hero-hl{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,8vw,7.5rem);font-weight:900;line-height:.92;color:#fff;letter-spacing:-.02em;margin-bottom:30px}
+.hero-hl em{font-style:italic;color:var(--purple-light);display:block}
+.hero-pills{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;margin-bottom:44px}
+.hero-pill{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.24);padding:6px 16px;border-radius:100px;backdrop-filter:blur(8px)}
+.hero-pill.ac{border-color:var(--purple-light);color:var(--purple-light)}
+.hero-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px}
+.btn-p{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:13px 30px;border-radius:4px;transition:all .25s var(--spring);display:inline-block}
+.btn-p.ac{background:var(--purple);color:#fff}
+.btn-p.ac:hover{background:var(--purple-light);transform:translateY(-2px);box-shadow:0 12px 30px var(--purple-glow)}
+.btn-p.ol{background:transparent;border:1.5px solid rgba(255,255,255,.46);color:#fff}
+.btn-p.ol:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(255,255,255,.4);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;animation:floatUp 2.4s ease infinite}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent)}
+@keyframes floatUp{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+.mute-btn{position:absolute;bottom:32px;right:24px;z-index:4;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.44);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;transition:background .2s,border-color .2s,transform .2s var(--spring)}
+.mute-btn:hover{background:rgba(87,49,152,.42);border-color:var(--purple-light);transform:scale(1.1)}
 
-    /* Mobile Drawer */
-    #mob-drawer{position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:190;background:rgba(9,7,18,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateY(-100%);transition:transform .4s var(--ease-smooth),opacity .35s;opacity:0;pointer-events:none}
-    #mob-drawer.open{transform:translateY(0);opacity:1;pointer-events:all}
-    .mob-link{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:rgba(255,255,255,.78);padding:10px 30px;border-radius:6px;transition:color .2s,background .2s;text-align:center}
-    .mob-link:hover{color:#fff;background:rgba(87,49,152,.2)}
-    .mob-cta{margin-top:18px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:var(--purple);padding:13px 34px;border-radius:4px;transition:background .2s}
-    .mob-cta:hover{background:var(--purple-light)}
+/* ─── COMMONS ─── */
+.sec-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec-label::before{content:'';width:22px;height:1.5px;background:var(--purple)}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:900;line-height:1.06;letter-spacing:-.02em}
+.sec-body{font-size:16px;line-height:1.76;color:var(--muted);font-weight:300;max-width:580px}
+.btn-solid{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:12px 22px;border-radius:4px;transition:all .25s var(--spring);display:inline-block}
+.btn-solid.pur{background:var(--purple);color:#fff}
+.btn-solid.pur:hover{background:var(--purple-light);transform:translateY(-2px);box-shadow:0 8px 22px var(--purple-glow)}
+.btn-solid.drk{background:var(--deep);color:#fff}
+.btn-solid.drk:hover{background:var(--mid);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.26)}
+.btn-tl{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text);display:inline-flex;align-items:center;gap:7px;transition:gap .2s var(--spring),color .2s}
+.btn-tl:hover{gap:13px;color:var(--purple)}
+.btn-tl::after{content:'→';font-size:14px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
 
-    /* HERO */
-    #hero{position:relative;height:100vh;min-height:580px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-    .hero-vid-wrap{position:absolute;inset:0;z-index:0}
-    .hero-vid-wrap video{width:100%;height:100%;object-fit:cover;object-position:center}
-    .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(10,6,26,.8) 0%,rgba(15,10,38,.48) 50%,rgba(10,6,26,.72) 100%)}
-    .hero-grain{position:absolute;inset:0;z-index:2;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px}
-    .hero-content{position:relative;z-index:3;text-align:center;padding:0 18px;max-width:940px}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:26px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--purple-light)}
-    .hero-eyebrow::before,.hero-eyebrow::after{content:'';height:1px;width:34px;background:var(--purple-light);opacity:.65}
-    .hero-hl{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,8vw,7.5rem);font-weight:900;line-height:.92;color:#fff;letter-spacing:-.02em;margin-bottom:30px}
-    .hero-hl em{font-style:italic;color:var(--purple-light);display:block}
-    .hero-pills{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;margin-bottom:44px}
-    .hero-pill{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.24);padding:6px 16px;border-radius:100px;backdrop-filter:blur(8px)}
-    .hero-pill.ac{border-color:var(--purple-light);color:var(--purple-light)}
-    .hero-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:13px}
-    .btn-p{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:14px 32px;border-radius:4px;transition:all .25s var(--ease-spring);display:inline-block}
-    .btn-p.ac{background:var(--purple);color:#fff}
-    .btn-p.ac:hover{background:var(--purple-light);transform:translateY(-2px);box-shadow:0 12px 30px var(--purple-glow)}
-    .btn-p.ol{background:transparent;border:1.5px solid rgba(255,255,255,.48);color:#fff}
-    .btn-p.ol:hover{border-color:#fff;background:rgba(255,255,255,.1);transform:translateY(-2px)}
-    .hero-scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(255,255,255,.42);font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;animation:floatUp 2.4s ease infinite}
-    .hero-scroll-line{width:1px;height:42px;background:linear-gradient(to bottom,rgba(255,255,255,.42),transparent)}
-    @keyframes floatUp{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
-    .mute-btn{position:absolute;bottom:34px;right:28px;z-index:4;width:42px;height:42px;border-radius:50%;background:rgba(0,0,0,.44);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;transition:background .2s,border-color .2s,transform .2s var(--ease-spring)}
-    .mute-btn:hover{background:rgba(87,49,152,.42);border-color:var(--purple-light);transform:scale(1.1)}
+/* ─── MARQUEE ─── */
+#wstrip{background:var(--purple);padding:14px 0;overflow:hidden}
+.mtrack{display:flex;animation:marquee 32s linear infinite;white-space:nowrap}
+.mitem{display:inline-flex;align-items:center;gap:12px;padding:0 24px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.88)}
+.mdot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.36);flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* SECTION COMMONS */
-    .sec-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);margin-bottom:13px;display:flex;align-items:center;gap:10px}
-    .sec-label::before{content:'';width:24px;height:1.5px;background:var(--purple)}
-    .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.85rem,4vw,3.3rem);font-weight:900;line-height:1.06;letter-spacing:-.02em}
-    .sec-body{font-size:16px;line-height:1.76;color:var(--muted);font-weight:300;max-width:580px}
-    .btn-solid{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:12px 24px;border-radius:4px;transition:all .25s var(--ease-spring);display:inline-block}
-    .btn-solid.pur{background:var(--purple);color:#fff}
-    .btn-solid.pur:hover{background:var(--purple-light);transform:translateY(-2px);box-shadow:0 8px 22px var(--purple-glow)}
-    .btn-solid.drk{background:var(--deep);color:#fff}
-    .btn-solid.drk:hover{background:var(--mid);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.26)}
-    .btn-tl{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text);display:flex;align-items:center;gap:7px;transition:gap .2s var(--ease-spring),color .2s}
-    .btn-tl:hover{gap:13px;color:var(--purple)}
-    .btn-tl::after{content:'→';font-size:15px}
+/* ─── WELCOME ─── */
+#welcome{padding:104px 0;background:var(--smoke)}
+.wgrid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.wimg{width:100%;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--mid);position:relative}
+.wimg img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.wimg:hover img{transform:scale(1.04)}
+.wstat{position:absolute;bottom:-22px;right:-18px;background:var(--purple);padding:20px 24px;border-radius:6px;text-align:center;box-shadow:0 16px 44px rgba(87,49,152,.44)}
+.wstat-n{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:#fff;line-height:1;margin-bottom:3px}
+.wstat-l{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.wtxt{padding-left:8px}
+.wtxt .sec-title{margin-bottom:18px}
+.wlinks{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:30px}
 
-    /* WELCOME STRIP */
-    #wstrip{background:var(--purple);padding:15px 0;overflow:hidden}
-    .mtrack{display:flex;animation:marquee 32s linear infinite;white-space:nowrap}
-    .mitem{display:inline-flex;align-items:center;gap:13px;padding:0 26px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.88)}
-    .mdot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.38);flex-shrink:0}
-    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ─── PASTOR ─── */
+#pastor{padding:104px 0;background:var(--white)}
+.pgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center}
+.ptxt .sec-title{margin-bottom:18px}
+.ptxt .sec-body{margin-bottom:14px}
+.pimg-wrap{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:3/4}
+.pimg-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s var(--ease)}
+.pimg-wrap:hover img{transform:scale(1.03)}
+.pimg-accent{position:absolute;top:-12px;left:-12px;width:56%;height:56%;border:2px solid var(--purple);border-radius:6px;pointer-events:none;z-index:-1}
 
-    /* WELCOME */
-    #welcome{padding:108px 0;background:var(--smoke)}
-    .wgrid{display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:center}
-    .wvisual{position:relative}
-    .wimg{width:100%;aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--mid);position:relative}
-    .wimg img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease-smooth)}
-    .wimg:hover img{transform:scale(1.04)}
-    .wstat{position:absolute;bottom:-24px;right:-20px;background:var(--purple);padding:22px 26px;border-radius:6px;text-align:center;box-shadow:0 18px 48px rgba(87,49,152,.42)}
-    .wstat-n{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:#fff;line-height:1;margin-bottom:4px}
-    .wstat-l{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
-    .wtxt{padding-left:10px}
-    .wtxt .sec-title{margin-bottom:20px}
-    .wtxt .sec-body{margin-bottom:32px}
-    .wlinks{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+/* ─── SERVICES ─── */
+#services{padding:96px 0;background:var(--deep);color:#fff}
+.shdr{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px;flex-wrap:wrap}
+#services .sec-label{color:var(--purple-light)}
+#services .sec-label::before{background:var(--purple-light)}
+#services .sec-title{color:#fff}
+#services .sec-body{color:rgba(255,255,255,.46)}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.scard{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--mid);cursor:pointer}
+.scbg{position:absolute;inset:0;transition:transform .6s var(--ease)}
+.scbg img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.scard:hover .scbg{transform:scale(1.05)}
+.scov{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,7,18,.93) 0%,rgba(9,7,18,.28) 55%,rgba(9,7,18,.1) 100%)}
+.scico{position:absolute;top:24px;left:24px;width:44px;height:44px;background:rgba(87,49,152,.2);border:1px solid rgba(87,49,152,.4);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--purple-light);transition:background .3s,border-color .3s}
+.scard:hover .scico{background:rgba(87,49,152,.36);border-color:var(--purple-light)}
+.sccnt{position:absolute;bottom:0;left:0;right:0;padding:24px}
+.sctag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--purple-light);margin-bottom:6px}
+.sctitle{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:6px}
+.scdesc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.56;font-weight:300;margin-bottom:13px}
+.sclink{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--purple-light);display:inline-flex;align-items:center;gap:6px;transition:gap .2s var(--spring)}
+.scard:hover .sclink{gap:12px}
+.sclink::after{content:'→'}
 
-    /* PASTOR */
-    #pastor{padding:108px 0;background:var(--white)}
-    .pgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:76px;align-items:center}
-    .ptxt .sec-title{margin-bottom:20px}
-    .ptxt .sec-body{margin-bottom:16px}
-    .pimg-wrap{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:3/4}
-    .pimg-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s var(--ease-smooth)}
-    .pimg-wrap:hover img{transform:scale(1.03)}
-    .pimg-accent{position:absolute;top:-14px;left:-14px;width:58%;height:58%;border:2px solid var(--purple);border-radius:6px;pointer-events:none;z-index:-1}
+/* ─── MESSAGES / PLAYLISTS ─── */
+#message{padding:104px 0;background:var(--smoke)}
+.msg-top{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;margin-bottom:80px}
+.mvid{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#0d0820;box-shadow:0 24px 64px rgba(87,49,152,.3)}
+.mvid iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.minfo .sec-title{margin-bottom:14px}
+.minfo .sec-body{margin-bottom:28px}
+.mmeta{display:flex;align-items:center;gap:11px;margin-bottom:22px;flex-wrap:wrap}
+.mmeta span{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:5px}
+/* Playlists */
+.pl-section{background:var(--white);border-radius:8px;padding:40px;box-shadow:0 2px 24px rgba(87,49,152,.06)}
+.pl-hdr{text-align:center;margin-bottom:36px}
+.pl-hdr .sec-label{justify-content:center}
+.pl-hdr .sec-title{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:8px}
+.pl-hdr p{font-size:14px;color:var(--muted)}
+.pl-tabs{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:32px}
+.pl-tab{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;border-radius:4px;border:1.5px solid rgba(87,49,152,.25);color:var(--muted);transition:all .2s var(--spring);cursor:pointer}
+.pl-tab.active,.pl-tab:hover{background:var(--purple);color:#fff;border-color:var(--purple);transform:translateY(-1px)}
+.pl-player{display:none;position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:var(--mid)}
+.pl-player.active{display:block}
+.pl-player iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.pl-yt-link{text-align:center;margin-top:20px}
+.pl-yt-link a{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);display:inline-flex;align-items:center;gap:7px;transition:gap .2s var(--spring),color .2s}
+.pl-yt-link a:hover{color:var(--purple-dark);gap:13px}
+.pl-yt-link a::after{content:'→'}
 
-    /* SERVICES */
-    #services{padding:96px 0;background:var(--deep);color:#fff}
-    .shdr{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:60px;flex-wrap:wrap}
-    #services .sec-label{color:var(--purple-light)}
-    #services .sec-label::before{background:var(--purple-light)}
-    #services .sec-title{color:#fff}
-    #services .sec-body{color:rgba(255,255,255,.48)}
-    .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-    .scard{position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--mid);cursor:pointer}
-    .scbg{position:absolute;inset:0;transition:transform .6s var(--ease-smooth)}
-    .scbg img{width:100%;height:100%;object-fit:cover;object-position:center top}
-    .scard:hover .scbg{transform:scale(1.05)}
-    .scov{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,7,18,.92) 0%,rgba(9,7,18,.3) 55%,rgba(9,7,18,.12) 100%)}
-    .scico{position:absolute;top:26px;left:26px;width:46px;height:46px;background:rgba(87,49,152,.2);border:1px solid rgba(87,49,152,.42);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:19px;transition:background .3s,border-color .3s}
-    .scard:hover .scico{background:rgba(87,49,152,.38);border-color:var(--purple-light)}
-    .sccnt{position:absolute;bottom:0;left:0;right:0;padding:26px}
-    .sctag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--purple-light);margin-bottom:7px}
-    .sctitle{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:7px}
-    .scdesc{font-size:13px;color:rgba(255,255,255,.52);line-height:1.58;font-weight:300;margin-bottom:14px}
-    .sclink{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--purple-light);display:inline-flex;align-items:center;gap:7px;transition:gap .2s var(--ease-spring)}
-    .scard:hover .sclink{gap:13px}
-    .sclink::after{content:'→'}
+/* ─── EVENTS ─── */
+#events{padding:96px 0;background:var(--smoke)}
+.ehdr{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:44px;flex-wrap:wrap}
+.egrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ecard{border-radius:6px;overflow:hidden;background:var(--white);transition:transform .3s var(--ease),box-shadow .3s;cursor:pointer}
+.ecard:hover{transform:translateY(-6px);box-shadow:0 16px 44px rgba(87,49,152,.13)}
+.ecimg{aspect-ratio:3/4;overflow:hidden;background:var(--mid);position:relative}
+.ecimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.ecard:hover .ecimg img{transform:scale(1.05)}
+.ecdate{position:absolute;top:12px;left:12px;background:var(--purple);padding:7px 12px;border-radius:4px;text-align:center}
+.ecd-d{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#fff;line-height:1}
+.ecd-m{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.ecbody{padding:18px}
+.ectag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:5px}
+.ectitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;line-height:1.25;margin-bottom:7px;color:var(--text)}
+.ectime{font-size:12px;color:var(--muted);font-weight:400;display:flex;align-items:center;gap:5px}
 
-    /* LATEST MESSAGE */
-    #message{padding:108px 0;background:var(--smoke)}
-    .mgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:68px;align-items:center}
-    .mvid{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#0d0820;box-shadow:0 28px 72px rgba(87,49,152,.3)}
-    .mvid iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-    .minfo .sec-title{margin-bottom:16px}
-    .minfo .sec-body{margin-bottom:32px}
-    .mmeta{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
-    .mmeta span{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:5px}
+/* ─── PASTOR QUOTE ─── */
+#pquote{padding:104px 0;background:var(--purple);position:relative;overflow:hidden}
+#pquote::before{content:'"';position:absolute;top:-80px;left:24px;font-family:'Playfair Display',serif;font-size:350px;font-weight:900;color:rgba(255,255,255,.06);line-height:1;pointer-events:none}
+.pq-inner{max-width:740px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.pq-txt{font-family:'Playfair Display',serif;font-size:clamp(1.45rem,3vw,2.5rem);font-weight:700;font-style:italic;line-height:1.38;color:#fff;margin-bottom:32px}
+.pq-attr{display:flex;align-items:center;justify-content:center;gap:12px}
+.pq-div{width:32px;height:1.5px;background:rgba(255,255,255,.26)}
+.pq-name{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.54)}
 
-    /* EVENTS */
-    #events{padding:96px 0;background:var(--white)}
-    .ehdr{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:48px;flex-wrap:wrap}
-    .egrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    .ecard{border-radius:6px;overflow:hidden;background:var(--smoke);transition:transform .3s var(--ease-smooth),box-shadow .3s;cursor:pointer}
-    .ecard:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(87,49,152,.14)}
-    .ecimg{aspect-ratio:3/4;overflow:hidden;background:var(--mid);position:relative}
-    .ecimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-smooth)}
-    .ecard:hover .ecimg img{transform:scale(1.05)}
-    .ecdate{position:absolute;top:13px;left:13px;background:var(--purple);padding:7px 13px;border-radius:4px;text-align:center}
-    .ecd-d{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:#fff;line-height:1}
-    .ecd-m{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.68)}
-    .ecbody{padding:20px}
-    .ectag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:6px}
-    .ectitle{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;line-height:1.25;margin-bottom:8px;color:var(--text)}
-    .ectime{font-size:13px;color:var(--muted);font-weight:400}
+/* ─── MINISTRIES ─── */
+#ministries{padding:96px 0;background:var(--smoke)}
+.min-hdr{text-align:center;margin-bottom:48px}
+.min-hdr .sec-label{justify-content:center}
+.min-hdr .sec-title{margin-bottom:11px}
+.min-hdr .sec-body{margin:0 auto;text-align:center}
+.min-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.min-card{padding:28px 20px;background:var(--white);border-radius:6px;border:1px solid transparent;transition:all .3s var(--ease);cursor:pointer;position:relative;overflow:hidden}
+.min-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--purple);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.min-card:hover{border-color:rgba(87,49,152,.2);transform:translateY(-4px);box-shadow:0 10px 34px rgba(87,49,152,.1)}
+.min-card:hover::after{transform:scaleX(1)}
+.min-ico{width:48px;height:48px;background:var(--purple-faint);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--purple);margin-bottom:14px;transition:background .3s}
+.min-card:hover .min-ico{background:rgba(87,49,152,.2)}
+.min-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:7px}
+.min-desc{font-size:13px;color:var(--muted);line-height:1.62;font-weight:300}
 
-    /* PASTOR QUOTE */
-    #pquote{padding:108px 0;background:var(--purple);position:relative;overflow:hidden}
-    #pquote::before{content:'"';position:absolute;top:-80px;left:28px;font-family:'Playfair Display',serif;font-size:370px;font-weight:900;color:rgba(255,255,255,.06);line-height:1;pointer-events:none}
-    .pq-inner{max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:1}
-    .pq-txt{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.6rem);font-weight:700;font-style:italic;line-height:1.38;color:#fff;margin-bottom:34px}
-    .pq-attr{display:flex;align-items:center;justify-content:center;gap:13px}
-    .pq-div{width:34px;height:1.5px;background:rgba(255,255,255,.28)}
-    .pq-name{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.56)}
+/* ─── BFG ─── */
+#bfg{padding:96px 0;background:var(--white)}
+.bfg-hdr{text-align:center;margin-bottom:12px}
+.bfg-hdr .sec-label{justify-content:center}
+.bfg-hdr .sec-title{margin-bottom:12px}
+.bfg-intro{font-size:15px;line-height:1.75;color:var(--muted);font-weight:300;max-width:600px;text-align:center;margin:0 auto 48px}
+.bfg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
+.bfg-card{border-radius:8px;overflow:hidden;background:var(--smoke);border:1px solid rgba(87,49,152,.1);transition:transform .3s var(--ease),box-shadow .3s;display:flex;flex-direction:column}
+.bfg-card:hover{transform:translateY(-5px);box-shadow:0 14px 40px rgba(87,49,152,.12)}
+.bfg-cimg{aspect-ratio:4/3;overflow:hidden;background:var(--mid)}
+.bfg-cimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.bfg-card:hover .bfg-cimg img{transform:scale(1.05)}
+.bfg-cbody{padding:20px;flex:1;display:flex;flex-direction:column}
+.bfg-ctitle{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:7px;line-height:1.3}
+.bfg-cdesc{font-size:13px;color:var(--muted);line-height:1.62;font-weight:300;flex:1;margin-bottom:16px}
+.bfg-cmeta{display:flex;align-items:center;gap:6px;margin-bottom:13px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--purple)}
+.bfg-cmeta i{font-size:11px}
+.bfg-join{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--purple);padding:9px 18px;border-radius:4px;display:inline-block;transition:background .2s,transform .2s var(--spring);align-self:flex-start}
+.bfg-join:hover{background:var(--purple-light);transform:translateY(-1px)}
+.bfg-hidden{display:none}
+.bfg-btns{text-align:center;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+#bfgMore,#bfgLess{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:2px solid var(--purple);padding:12px 30px;border-radius:4px;transition:all .25s var(--spring);cursor:pointer}
+#bfgMore{color:var(--purple);background:transparent}
+#bfgMore:hover{background:var(--purple);color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px var(--purple-glow)}
+#bfgLess{color:#fff;background:var(--purple);display:none}
+#bfgLess:hover{background:var(--purple-light);transform:translateY(-2px)}
+#bfgMore.hide,#bfgLess.show-it{display:none}
+#bfgMore.hide + #bfgLess{display:inline-block}
 
-    /* MINISTRIES */
-    #ministries{padding:96px 0;background:var(--smoke)}
-    .min-hdr{text-align:center;margin-bottom:52px}
-    .min-hdr .sec-label{justify-content:center}
-    .min-hdr .sec-title{margin-bottom:13px}
-    .min-hdr .sec-body{margin:0 auto;text-align:center}
-    .min-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .min-card{padding:30px 22px;background:var(--white);border-radius:6px;border:1px solid transparent;transition:all .3s var(--ease-smooth);cursor:pointer;position:relative;overflow:hidden}
-    .min-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--purple);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-smooth)}
-    .min-card:hover{border-color:rgba(87,49,152,.2);transform:translateY(-4px);box-shadow:0 12px 38px rgba(87,49,152,.1)}
-    .min-card:hover::after{transform:scaleX(1)}
-    .min-ico{width:50px;height:50px;background:var(--purple-faint);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:16px;transition:background .3s}
-    .min-card:hover .min-ico{background:rgba(87,49,152,.2)}
-    .min-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:8px}
-    .min-desc{font-size:13px;color:var(--muted);line-height:1.63;font-weight:300}
+/* ─── GALLERY ─── */
+#gallery{padding:96px 0;background:var(--smoke)}
+.gal-hdr{text-align:center;margin-bottom:44px}
+.gal-hdr .sec-label{justify-content:center}
+.gal-hdr .sec-title{margin-bottom:10px}
+.gal-masonry{columns:3;column-gap:12px;margin-bottom:28px}
+@media(max-width:768px){.gal-masonry{columns:2}}
+@media(max-width:480px){.gal-masonry{columns:1}}
+.gal-item{break-inside:avoid;margin-bottom:12px;border-radius:6px;overflow:hidden;cursor:pointer;position:relative}
+.gal-item img{width:100%;height:auto;display:block;transition:transform .5s var(--ease),filter .3s}
+.gal-item:hover img{transform:scale(1.03);filter:brightness(1.08)}
+.gal-item-overlay{position:absolute;inset:0;background:rgba(87,49,152,0);transition:background .3s}
+.gal-item:hover .gal-item-overlay{background:rgba(87,49,152,.15)}
+.gal-item.gal-hidden{display:none}
+.gal-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.gal-btn{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border:2px solid var(--purple);padding:12px 30px;border-radius:4px;transition:all .25s var(--spring);cursor:pointer}
+#galMore{color:var(--purple);background:transparent}
+#galMore:hover{background:var(--purple);color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px var(--purple-glow)}
+#galLess{color:#fff;background:var(--purple);display:none}
+#galLess:hover{background:var(--purple-light);transform:translateY(-2px)}
+/* Lightbox */
+#lightbox{position:fixed;inset:0;z-index:500;background:rgba(9,7,18,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+#lightbox.open{opacity:1;pointer-events:all}
+#lightbox img{max-width:90vw;max-height:88vh;border-radius:6px;object-fit:contain;box-shadow:0 0 80px rgba(87,49,152,.4)}
+.lb-close{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:16px;transition:all .2s;cursor:pointer}
+.lb-close:hover{background:rgba(87,49,152,.4);color:#fff}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:16px;transition:all .2s;cursor:pointer}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lb-prev:hover,.lb-next:hover{background:rgba(87,49,152,.4);color:#fff}
 
-    /* BFG */
-    #bfg{padding:96px 0;background:var(--white)}
-    .bfg-hdr{text-align:center;margin-bottom:14px}
-    .bfg-hdr .sec-label{justify-content:center}
-    .bfg-hdr .sec-title{margin-bottom:14px}
-    .bfg-intro{font-size:16px;line-height:1.76;color:var(--muted);font-weight:300;max-width:620px;text-align:center;margin:0 auto 52px}
-    .bfg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:32px}
-    .bfg-card{border-radius:8px;overflow:hidden;background:var(--smoke);border:1px solid rgba(87,49,152,.1);transition:transform .3s var(--ease-smooth),box-shadow .3s;display:flex;flex-direction:column}
-    .bfg-card:hover{transform:translateY(-5px);box-shadow:0 16px 44px rgba(87,49,152,.13)}
-    .bfg-cimg{aspect-ratio:4/3;overflow:hidden;background:var(--mid)}
-    .bfg-cimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-smooth)}
-    .bfg-card:hover .bfg-cimg img{transform:scale(1.05)}
-    .bfg-cbody{padding:22px;flex:1;display:flex;flex-direction:column}
-    .bfg-ctitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:9px;line-height:1.3}
-    .bfg-cdesc{font-size:13px;color:var(--muted);line-height:1.63;font-weight:300;flex:1;margin-bottom:18px}
-    .bfg-cmeta{display:flex;align-items:center;gap:7px;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--purple)}
-    .bfg-join{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--purple);padding:10px 20px;border-radius:4px;display:inline-block;transition:background .2s,transform .2s var(--ease-spring);align-self:flex-start}
-    .bfg-join:hover{background:var(--purple-light);transform:translateY(-1px)}
-    .bfg-hidden{display:none}
-    .bfg-smw{text-align:center}
-    #bfgBtn{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--purple);background:transparent;border:2px solid var(--purple);padding:13px 34px;border-radius:4px;transition:all .25s var(--ease-spring);cursor:pointer}
-    #bfgBtn:hover{background:var(--purple);color:#fff;transform:translateY(-2px);box-shadow:0 8px 22px var(--purple-glow)}
-    #bfgBtn.hide{display:none}
+/* ─── VISIT ─── */
+#visit{padding:104px 0;background:var(--deep);position:relative;overflow:hidden}
+#visit::before{content:'';position:absolute;top:-180px;right:-180px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(87,49,152,.1) 0%,transparent 70%)}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+#visit .sec-label{color:var(--purple-light)}
+#visit .sec-label::before{background:var(--purple-light)}
+#visit .sec-title{color:#fff;margin-bottom:18px}
+#visit .sec-body{color:rgba(255,255,255,.46);margin-bottom:36px}
+.vlist{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
+.vitem{display:flex;align-items:flex-start;gap:12px}
+.vico{width:38px;height:38px;flex-shrink:0;background:rgba(87,49,152,.15);border:1px solid rgba(87,49,152,.28);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--purple-light)}
+.vlbl{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--purple-light);margin-bottom:2px}
+.vval{font-size:13px;color:rgba(255,255,255,.7);font-weight:300;line-height:1.5}
+.vval a{color:rgba(255,255,255,.7);transition:color .2s}
+.vval a:hover{color:var(--purple-light)}
+/* Google Map embed */
+.vmap-wrap{border-radius:8px;overflow:hidden;position:relative;box-shadow:0 20px 56px rgba(0,0,0,.4);border:1px solid rgba(87,49,152,.2)}
+.vmap-wrap iframe{display:block;width:100%;height:420px;border:none}
 
-    /* VISIT */
-    #visit{padding:108px 0;background:var(--deep);position:relative;overflow:hidden}
-    #visit::before{content:'';position:absolute;top:-180px;right:-180px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(87,49,152,.1) 0%,transparent 70%)}
-    .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:86px;align-items:center}
-    #visit .sec-label{color:var(--purple-light)}
-    #visit .sec-label::before{background:var(--purple-light)}
-    #visit .sec-title{color:#fff;margin-bottom:20px}
-    #visit .sec-body{color:rgba(255,255,255,.48);margin-bottom:40px}
-    .vlist{list-style:none;display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
-    .vitem{display:flex;align-items:flex-start;gap:13px}
-    .vico{width:40px;height:40px;flex-shrink:0;background:rgba(87,49,152,.15);border:1px solid rgba(87,49,152,.3);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:17px}
-    .vlbl{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--purple-light);margin-bottom:3px}
-    .vval{font-size:14px;color:rgba(255,255,255,.72);font-weight:300;line-height:1.5}
-    .vval a{color:rgba(255,255,255,.72);transition:color .2s}
-    .vval a:hover{color:var(--purple-light)}
-    .vmap{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:1}
-    .vmap-in{width:100%;height:100%;background:linear-gradient(135deg,#14102a 0%,#0e0c1e 50%,#131228 100%);display:flex;align-items:center;justify-content:center;position:relative}
-    .vgrd{position:absolute;inset:0;background-image:linear-gradient(rgba(87,49,152,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(87,49,152,.07) 1px,transparent 1px);background-size:36px 36px}
-    .vpin{width:54px;height:54px;border-radius:50%;background:rgba(87,49,152,.24);border:2px solid var(--purple-light);display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;z-index:1;animation:mapPulse 2s ease infinite}
-    @keyframes mapPulse{0%,100%{box-shadow:0 0 0 0 rgba(87,49,152,.35)}50%{box-shadow:0 0 0 20px rgba(87,49,152,0)}}
-    .vadr{position:absolute;bottom:18px;left:18px;right:18px;background:rgba(0,0,0,.76);backdrop-filter:blur(12px);border:1px solid rgba(87,49,152,.24);border-radius:4px;padding:13px 16px}
-    .vadr-n{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:3px}
-    .vadr-s{font-size:12px;color:rgba(255,255,255,.42);font-weight:300}
+/* ─── GIVE ─── */
+#give{padding:104px 0;background:var(--dark);position:relative;overflow:hidden}
+.gbg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(87,49,152,.09) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(87,49,152,.06) 0%,transparent 60%)}
+.gin{position:relative;z-index:1;text-align:center;max-width:620px;margin:0 auto}
+#give .sec-label{justify-content:center;color:var(--purple-light)}
+#give .sec-label::before{background:var(--purple-light)}
+#give .sec-title{color:#fff;margin-bottom:18px}
+#give .sec-body{color:rgba(255,255,255,.42);margin:0 auto 36px;text-align:center}
+.gacts{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
 
-    /* GIVE */
-    #give{padding:108px 0;background:var(--dark);position:relative;overflow:hidden}
-    .gbg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(87,49,152,.09) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(87,49,152,.06) 0%,transparent 60%)}
-    .gin{position:relative;z-index:1;text-align:center;max-width:640px;margin:0 auto}
-    #give .sec-label{justify-content:center;color:var(--purple-light)}
-    #give .sec-label::before{background:var(--purple-light)}
-    #give .sec-title{color:#fff;margin-bottom:20px}
-    #give .sec-body{color:rgba(255,255,255,.43);margin:0 auto 40px;text-align:center}
-    .gacts{display:flex;align-items:center;justify-content:center;gap:13px;flex-wrap:wrap}
+/* ─── SOCIAL ─── */
+#socstrip{padding:80px 0;background:var(--white)}
+.soc-hdr{text-align:center;margin-bottom:40px}
+.soc-hdr .sec-label{justify-content:center}
+.soc-hdr .sec-title{font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:6px}
+.soc-hdr p{font-size:14px;color:var(--muted)}
+.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:36px}
+@media(min-width:768px){.soc-grid{grid-template-columns:repeat(6,1fr)}}
+.soc-tile{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;cursor:pointer;background:var(--smoke)}
+.soc-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease),filter .3s}
+.soc-tile:hover img{transform:scale(1.06);filter:brightness(1.1)}
+.soc-tile-overlay{position:absolute;inset:0;background:rgba(87,49,152,0);transition:background .3s;display:flex;align-items:center;justify-content:center}
+.soc-tile:hover .soc-tile-overlay{background:rgba(87,49,152,.2)}
+.soc-icon-bar{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.soc-icon-btn{width:46px;height:46px;border-radius:50%;background:var(--smoke);border:1.5px solid rgba(87,49,152,.2);display:flex;align-items:center;justify-content:center;color:var(--purple);font-size:18px;transition:all .25s var(--spring)}
+.soc-icon-btn:hover{background:var(--purple);border-color:var(--purple);color:#fff;transform:translateY(-3px);box-shadow:0 8px 20px var(--purple-glow)}
 
-    /* SOCIAL */
-    #socstrip{padding:68px 0;background:var(--white)}
-    .soc-hdr{text-align:center;margin-bottom:36px}
-    .soc-hdr .sec-label{justify-content:center}
-    .socgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;max-width:1200px;margin:0 auto}
-    .soctile{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;overflow:hidden;position:relative;transition:transform .3s var(--ease-smooth)}
-    .soctile:hover{transform:scale(.97)}
-    .soctov{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;align-items:center;justify-content:center}
-    .soctile:hover .soctov{background:rgba(87,49,152,.16)}
+/* ─── FOOTER ─── */
+#footer{background:var(--deep);padding:64px 0 30px;color:rgba(255,255,255,.5)}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
+.flogo img{height:40px;width:auto;filter:brightness(0) invert(1);margin-bottom:12px}
+.fbname{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.ftagline{font-size:13px;color:rgba(255,255,255,.34);font-weight:300;margin-bottom:20px;line-height:1.58}
+.fsocs{display:flex;gap:8px}
+.fsocia{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.4);transition:all .2s}
+.fsocia:hover{background:rgba(87,49,152,.22);border-color:rgba(87,49,152,.38);color:var(--purple-light)}
+.fcoltitle{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-bottom:14px}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:8px}
+.flinks a{font-size:13px;color:rgba(255,255,255,.36);font-weight:300;transition:color .2s}
+.flinks a:hover{color:#fff}
+.fbot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.fcopy{font-size:11px;color:rgba(255,255,255,.2)}
+.flegal{display:flex;gap:16px}
+.flegal a{font-size:11px;color:rgba(255,255,255,.2);transition:color .2s}
+.flegal a:hover{color:rgba(255,255,255,.5)}
 
-    /* FOOTER */
-    #footer{background:var(--deep);padding:68px 0 32px;color:rgba(255,255,255,.52)}
-    .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:32px}
-    .flogo img{height:44px;width:auto;filter:brightness(0) invert(1);margin-bottom:13px}
-    .fbname{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:5px}
-    .ftagline{font-size:13px;color:rgba(255,255,255,.35);font-weight:300;margin-bottom:22px;line-height:1.6}
-    .fsocs{display:flex;gap:7px}
-    .fsocia{width:34px;height:34px;border-radius:4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,.42);font-weight:700;transition:all .2s}
-    .fsocia:hover{background:rgba(87,49,152,.2);border-color:rgba(87,49,152,.38);color:var(--purple-light)}
-    .fcoltitle{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-bottom:16px}
-    .flinks{list-style:none;display:flex;flex-direction:column;gap:9px}
-    .flinks a{font-size:13px;color:rgba(255,255,255,.38);font-weight:300;transition:color .2s}
-    .flinks a:hover{color:#fff}
-    .fbot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:13px}
-    .fcopy{font-size:12px;color:rgba(255,255,255,.22)}
-    .flegal{display:flex;gap:18px}
-    .flegal a{font-size:12px;color:rgba(255,255,255,.22);transition:color .2s}
-    .flegal a:hover{color:rgba(255,255,255,.5)}
-
-    /* REVEAL */
-    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease-smooth),transform .7s var(--ease-smooth)}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    .rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
-
-    /* RESPONSIVE */
-    @media (max-width:1100px){
-      .min-grid{grid-template-columns:repeat(2,1fr)}
-      .ftop{grid-template-columns:1fr 1fr;gap:32px}
-    }
-    @media (max-width:900px){
-      .wgrid,.pgrid,.mgrid,.vgrid{grid-template-columns:1fr;gap:48px}
-      .wtxt{padding-left:0}
-      .wstat{position:static;display:inline-block;margin-top:18px}
-      .pimg-wrap{max-width:460px;margin:0 auto}
-      .pimg-accent{display:none}
-      .sgrid{grid-template-columns:1fr}
-      .egrid{grid-template-columns:1fr 1fr}
-      .bfg-grid{grid-template-columns:1fr 1fr}
-      .socgrid{grid-template-columns:repeat(3,1fr)}
-      .soctile:nth-child(n+4){display:none}
-    }
-    @media (max-width:768px){
-      :root{--nav-h:62px}
-      #nav{padding:0 14px}
-      .nav-links,.btn-watch-live{display:none}
-      .nav-hamburger{display:flex}
-      .egrid{grid-template-columns:1fr}
-      .bfg-grid{grid-template-columns:1fr}
-      .min-grid{grid-template-columns:1fr 1fr}
-      .ftop{grid-template-columns:1fr;gap:26px}
-      .fbot{flex-direction:column;text-align:center}
-      .flegal{justify-content:center}
-      .hero-actions{flex-direction:column;align-items:center}
-      .hero-actions .btn-p{width:100%;max-width:270px;text-align:center}
-    }
-    @media (max-width:480px){
-      .min-grid{grid-template-columns:1fr}
-      .hero-hl{font-size:clamp(2.1rem,13vw,3.2rem)}
-      #welcome,#services,#events,#bfg,#ministries{padding:72px 0}
-    }
-  </style>
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .min-grid{grid-template-columns:repeat(2,1fr)}
+  .ftop{grid-template-columns:1fr 1fr;gap:30px}
+}
+@media(max-width:900px){
+  .wgrid,.pgrid,.msg-top,.vgrid{grid-template-columns:1fr;gap:44px}
+  .wtxt{padding-left:0}
+  .wstat{position:static;display:inline-block;margin-top:18px}
+  .pimg-wrap{max-width:440px;margin:0 auto}
+  .pimg-accent{display:none}
+  .sgrid{grid-template-columns:1fr}
+  .egrid,.bfg-grid{grid-template-columns:1fr 1fr}
+  .vmap-wrap iframe{height:340px}
+}
+@media(max-width:768px){
+  :root{--nav-h:60px}
+  #nav{padding:0 12px}
+  .nav-links,.btn-watch-live{display:none}
+  .nav-hamburger{display:flex}
+  .egrid,.bfg-grid{grid-template-columns:1fr}
+  .min-grid{grid-template-columns:1fr 1fr}
+  .ftop{grid-template-columns:1fr;gap:24px}
+  .fbot{flex-direction:column;text-align:center}
+  .flegal{justify-content:center}
+  .hero-actions{flex-direction:column;align-items:center}
+  .hero-actions .btn-p{width:100%;max-width:260px;text-align:center}
+  .pl-section{padding:24px 16px}
+  .vmap-wrap iframe{height:280px}
+  .soc-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:480px){
+  .min-grid{grid-template-columns:1fr}
+  .hero-hl{font-size:clamp(2rem,13vw,3rem)}
+  #welcome,#services,#events,#bfg,#ministries,#gallery{padding:64px 0}
+  .gal-masonry{columns:1}
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ─── NAV ─── -->
 <nav id="nav" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="World Harvest Church home">
-      <img src="https://elro-images.s3.us-east-2.amazonaws.com/tosm/WHC+Wheat+Logo+(1).png" alt="World Harvest Church" width="140" height="42"/>
+    <a href="#" class="nav-logo" aria-label="World Harvest Church">
+      <img src="https://elro-images.s3.us-east-2.amazonaws.com/tosm/WHC+Wheat+Logo+(1).png" alt="World Harvest Church" width="140" height="40"/>
     </a>
     <ul class="nav-links" role="list">
       <li><a href="#welcome">About</a></li>
       <li><a href="#ministries">Ministries</a></li>
       <li><a href="#bfg">Groups</a></li>
       <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#visit">Visit</a></li>
       <li><a href="#give">Give</a></li>
     </ul>
-    <div class="nav-cta">
+    <div class="nav-right">
+      <button class="nav-search-btn" id="searchBtn" aria-label="Search Bible Fellowship Groups">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
       <a href="https://online.whc.life/" target="_blank" rel="noopener" class="btn-watch-live">Watch Live</a>
       <button class="nav-hamburger" id="hamBtn" aria-label="Open navigation" aria-expanded="false" aria-controls="mob-drawer">
         <span></span><span></span><span></span>
@@ -377,18 +438,32 @@
   </div>
 </nav>
 
-<!-- MOBILE DRAWER -->
+<!-- ─── SEARCH OVERLAY ─── -->
+<div id="search-overlay" role="dialog" aria-modal="true" aria-label="Search Bible Fellowship Groups">
+  <button class="search-close" id="searchClose" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
+  <div class="search-inner">
+    <p class="search-heading">Search Bible Fellowship Groups</p>
+    <div class="search-bar">
+      <input type="search" id="searchInput" placeholder="e.g. Youth, College, Legacy…" autocomplete="off" aria-label="Search groups"/>
+      <button type="button" aria-label="Submit search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="search-suggestions" id="searchSuggestions" role="listbox" aria-label="Group suggestions"></div>
+  </div>
+</div>
+
+<!-- ─── MOBILE DRAWER ─── -->
 <div id="mob-drawer" role="dialog" aria-modal="true" aria-label="Navigation">
   <a href="#welcome" class="mob-link">About</a>
   <a href="#ministries" class="mob-link">Ministries</a>
   <a href="#bfg" class="mob-link">Groups</a>
   <a href="#events" class="mob-link">Events</a>
+  <a href="#gallery" class="mob-link">Gallery</a>
   <a href="#visit" class="mob-link">Visit</a>
   <a href="#give" class="mob-link">Give</a>
   <a href="https://online.whc.life/" target="_blank" rel="noopener" class="mob-cta">Watch Live</a>
 </div>
 
-<!-- HERO -->
+<!-- ─── HERO ─── -->
 <section id="hero" aria-label="Hero">
   <div class="hero-vid-wrap" aria-hidden="true">
     <video id="heroVid" autoplay muted loop playsinline preload="auto"
@@ -411,18 +486,18 @@
       <a href="https://online.whc.life/" target="_blank" rel="noopener" class="btn-p ol">Watch Online</a>
     </div>
   </div>
-  <!-- <div class="hero-scroll" aria-hidden="true"><div class="hero-scroll-line"></div>Scroll</div> -->
-  <button class="mute-btn" id="muteBtn" aria-label="Unmute video">🔇</button>
+  <div class="hero-scroll" aria-hidden="true"><div class="hero-scroll-line"></div>Scroll</div>
+  <button class="mute-btn" id="muteBtn" aria-label="Unmute video"><i class="fa-solid fa-volume-xmark"></i></button>
 </section>
 
-<!-- WELCOME STRIP -->
+<!-- ─── MARQUEE ─── -->
 <div id="wstrip" aria-hidden="true"><div class="mtrack" id="mtrack"></div></div>
 
-<!-- WELCOME -->
+<!-- ─── WELCOME ─── -->
 <section id="welcome" aria-labelledby="wh">
   <div class="container">
     <div class="wgrid">
-      <div class="wvisual reveal">
+      <div class="reveal" style="position:relative;">
         <div class="wimg">
           <img src="https://static.wixstatic.com/media/0c8444_75f62d849d5249e889dc6c10d0e7833d~mv2.jpg" alt="World Harvest Church congregation" loading="lazy" width="600" height="750"/>
         </div>
@@ -431,8 +506,8 @@
       <div class="wtxt reveal rd2">
         <p class="sec-label">Welcome to The Harv</p>
         <h2 class="sec-title" id="wh">A house of miracles for every generation</h2>
-        <p class="sec-body" style="margin-top:20px;">For decades, World Harvest Church has been a place where faith meets power and families find hope, healing, and purpose. Under the leadership of Pastor Rod Parsley, we are a home for world-changers — a house of prayer and healing for the nations.</p>
-        <div class="wlinks" style="margin-top:32px;">
+        <p class="sec-body" style="margin-top:18px;">For decades, World Harvest Church has been a place where faith meets power and families find hope, healing, and purpose. Under the leadership of Pastor Rod Parsley, we are a home for world-changers — a house of prayer and healing for the nations.</p>
+        <div class="wlinks">
           <a href="https://whc.life/our-pastor" target="_blank" rel="noopener" class="btn-solid pur">Our Pastor</a>
           <a href="https://whc.life/what-we-believe" target="_blank" rel="noopener" class="btn-tl">Our Beliefs</a>
         </div>
@@ -441,18 +516,18 @@
   </div>
 </section>
 
-<!-- PASTOR ROD -->
+<!-- ─── PASTOR ROD ─── -->
 <section id="pastor" aria-labelledby="ph">
   <div class="container">
     <div class="pgrid">
       <div class="ptxt reveal">
         <p class="sec-label">Our Pastor</p>
         <h2 class="sec-title" id="ph">Pastor Rod Parsley</h2>
-        <p class="sec-body" style="margin-top:20px;">Pastor Rod Parsley is one of America's most recognized voices for righteousness. His passionate preaching ministry has reached millions around the globe through television, radio, and live events.</p>
-        <p class="sec-body" style="margin-top:14px;">He leads World Harvest Church with a vision to be a house of prayer and healing for all nations — bringing hope, breakthrough, and the tangible presence of God each week.</p>
-        <div style="display:flex;gap:13px;flex-wrap:wrap;margin-top:34px;">
+        <p class="sec-body" style="margin-top:18px;">Pastor Rod Parsley is one of America's most recognized voices for righteousness. His passionate preaching ministry has reached millions around the globe through television, radio, and live events.</p>
+        <p class="sec-body" style="margin-top:12px;">He leads World Harvest Church with a vision to be a house of prayer and healing for all nations — bringing hope, breakthrough, and the tangible presence of God each week.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;">
           <a href="https://whc.life/our-pastor" target="_blank" rel="noopener" class="btn-solid pur">Learn More</a>
-          <a href="https://youtube.com/channel/rodparsley" target="_blank" rel="noopener" class="btn-tl">Watch Messages</a>
+          <a href="https://www.youtube.com/@rodparsley" target="_blank" rel="noopener" class="btn-tl">Watch Messages</a>
         </div>
       </div>
       <div class="reveal rd2" style="position:relative;">
@@ -465,7 +540,7 @@
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ─── SERVICES ─── -->
 <section id="services" aria-labelledby="sh">
   <div class="container">
     <div class="shdr">
@@ -476,12 +551,12 @@
       <p class="sec-body">Whether in person in Canal Winchester or watching from anywhere in the world — you are welcome.</p>
     </div>
   </div>
-  <div style="padding:0 14px;">
+  <div style="padding:0 12px;">
     <div class="sgrid" style="max-width:1200px;margin:0 auto;">
       <article class="scard reveal">
-        <div class="scbg"><img src="https://ik.imagekit.io/vddpcxj7e/dcm2025-worship-0644.large.jpg?tr=f-auto,q-auto,w-1200" alt="Sunday Service" loading="lazy" width="800" height="1067"/></div>
+        <div class="scbg"><img src="https://ik.imagekit.io/vddpcxj7e/WHC-Sunday-Live-Generic_2000stage@2x.jpg?tr=f-auto,q-auto,w-1200" alt="Sunday Service" loading="lazy" width="800" height="1067"/></div>
         <div class="scov" aria-hidden="true"></div>
-        <div class="scico" aria-hidden="true">⛪</div>
+        <div class="scico"><i class="fa-solid fa-church"></i></div>
         <div class="sccnt">
           <p class="sctag">In Person</p>
           <h3 class="sctitle">Sunday Service</h3>
@@ -490,9 +565,9 @@
         </div>
       </article>
       <article class="scard reveal rd2">
-        <div class="scbg"><img src="https://ik.imagekit.io/vddpcxj7e/dcm2025-worship-0644.large.jpg?tr=f-auto,q-auto,w-1200" alt="Wisdom Wednesdays Live Stream" loading="lazy" width="800" height="1067"/></div>
+        <div class="scbg"><img src="https://ik.imagekit.io/vddpcxj7e/Wisdom-Wednesdays_2000stage@2x.jpg?tr=f-auto,q-auto,w-1200" alt="Wisdom Wednesdays" loading="lazy" width="800" height="1067"/></div>
         <div class="scov" aria-hidden="true"></div>
-        <div class="scico" aria-hidden="true">📡</div>
+        <div class="scico"><i class="fa-solid fa-broadcast-tower"></i></div>
         <div class="sccnt">
           <p class="sctag">Live Stream</p>
           <h3 class="sctitle">Watch Online</h3>
@@ -503,7 +578,7 @@
       <article class="scard reveal rd3">
         <div class="scbg"><img src="https://ik.imagekit.io/vddpcxj7e/dcm2025-worship-0644.large.jpg?tr=f-auto,q-auto,w-1200" alt="Give and Partner" loading="lazy" width="800" height="1067"/></div>
         <div class="scov" aria-hidden="true"></div>
-        <div class="scico" aria-hidden="true">🙏</div>
+        <div class="scico"><i class="fa-solid fa-hand-holding-heart"></i></div>
         <div class="sccnt">
           <p class="sctag">Generosity</p>
           <h3 class="sctitle">Give &amp; Partner</h3>
@@ -515,28 +590,63 @@
   </div>
 </section>
 
-<!-- LATEST MESSAGE -->
+<!-- ─── MESSAGES & PLAYLISTS ─── -->
 <section id="message" aria-labelledby="mh">
   <div class="container">
-    <div class="mgrid">
+    <!-- Featured message -->
+    <div class="msg-top">
       <div class="mvid reveal">
-        <iframe src="https://www.youtube.com/embed/sfaawPpD5Z4" title="Latest Message — World Harvest Church" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+        <iframe src="https://www.youtube.com/embed/sfaawPpD5Z4?si=b9pyPW7jw0qjtWLP" title="Latest Message" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="minfo reveal rd2">
         <p class="sec-label">The Word</p>
         <h2 class="sec-title" id="mh">Watch the Latest Message</h2>
         <div class="mmeta">
-          <span>✝ Pastor Rod Parsley</span>
-          <span>🕐 Sundays 10 AM ET</span>
+          <span><i class="fa-solid fa-cross"></i> Pastor Rod Parsley</span>
+          <span><i class="fa-regular fa-clock"></i> Sundays 10 AM ET</span>
         </div>
         <p class="sec-body">Catch up on this week's word and explore past series on faith, family, and revival. Transformative preaching that meets you where you are.</p>
-        <a href="https://youtube.com/channel/rodparsley" target="_blank" rel="noopener" class="btn-solid drk" style="margin-top:30px;">Explore All Messages</a>
+        <a href="https://www.youtube.com/@rodparsley" target="_blank" rel="noopener" class="btn-solid drk" style="margin-top:26px;">
+          <i class="fa-brands fa-youtube" style="margin-right:6px;"></i>Explore All Messages
+        </a>
+      </div>
+    </div>
+
+    <!-- Playlists -->
+    <div class="pl-section reveal">
+      <div class="pl-hdr">
+        <p class="sec-label">Message Series</p>
+        <h3 class="sec-title" style="font-size:clamp(1.45rem,3vw,2.1rem);">Browse by Playlist</h3>
+        <p>Choose a series below and watch directly on this page.</p>
+      </div>
+      <div class="pl-tabs" role="tablist" aria-label="Message playlists">
+        <button class="pl-tab active" role="tab" aria-selected="true" data-pl="sunday" aria-controls="pl-sunday">
+          <i class="fa-solid fa-sun" style="margin-right:6px;"></i>Sunday Morning Live
+        </button>
+        <button class="pl-tab" role="tab" aria-selected="false" data-pl="wednesday" aria-controls="pl-wednesday">
+          <i class="fa-solid fa-moon" style="margin-right:6px;"></i>Wednesday Night Live
+        </button>
+        <button class="pl-tab" role="tab" aria-selected="false" data-pl="podcast" aria-controls="pl-podcast">
+          <i class="fa-solid fa-podcast" style="margin-right:6px;"></i>The Rod Parsley Podcast
+        </button>
+      </div>
+      <div class="pl-player active" id="pl-sunday" role="tabpanel">
+        <iframe src="https://www.youtube.com/embed/videoseries?si=JEir0ngJh3NlOlg9&list=PL1W3RW88DcSGwpoAi9S434B7oKx6Gnej6" title="Sunday Morning Live" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="pl-player" id="pl-wednesday" role="tabpanel">
+        <iframe src="https://www.youtube.com/embed/videoseries?si=3KyM3HjnkxBbeAg3&list=PL1W3RW88DcSE5QgMrLSjKSuvu7Ba4oVn5" title="Wednesday Night Live" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="pl-player" id="pl-podcast" role="tabpanel">
+        <iframe src="https://www.youtube.com/embed/videoseries?si=wNadI7aR2DK2yRc_&list=PL1W3RW88DcSHbyMACDuEaqNdVDsHPSdTk" title="The Rod Parsley Podcast" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="pl-yt-link">
+        <a href="https://www.youtube.com/@rodparsley" target="_blank" rel="noopener">Visit the Official YouTube Channel</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EVENTS -->
+<!-- ─── EVENTS ─── -->
 <section id="events" aria-labelledby="eh">
   <div class="container">
     <div class="ehdr">
@@ -552,27 +662,39 @@
           <img src="https://static.wixstatic.com/media/0c8444_f8e925c5cb994cb89951bb8e6f38aad9~mv2.jpg" alt="Easter Weekend" loading="lazy" width="400" height="530"/>
           <div class="ecdate"><div class="ecd-d">20</div><div class="ecd-m">Apr</div></div>
         </div>
-        <div class="ecbody"><p class="ectag">Special Event</p><h3 class="ectitle">Easter Weekend</h3><p class="ectime">📅 Sunday, April 20 · 10 AM ET</p></div>
+        <div class="ecbody">
+          <p class="ectag">Special Event</p>
+          <h3 class="ectitle">Easter Weekend</h3>
+          <p class="ectime"><i class="fa-regular fa-calendar" style="color:var(--purple)"></i> Sunday, April 20 · 10 AM ET</p>
+        </div>
       </article>
       <article class="ecard reveal rd2">
         <div class="ecimg">
           <img src="https://static.wixstatic.com/media/0c8444_d0f0c0b50ae740bcb6493bd54c4862fa~mv2.png" alt="Spring Weekend" loading="lazy" width="400" height="530"/>
           <div class="ecdate"><div class="ecd-d">19</div><div class="ecd-m">Apr</div></div>
         </div>
-        <div class="ecbody"><p class="ectag">Worship</p><h3 class="ectitle">Spring Weekend Services</h3><p class="ectime">📅 Saturday, April 19 · 6 PM ET</p></div>
+        <div class="ecbody">
+          <p class="ectag">Worship</p>
+          <h3 class="ectitle">Spring Weekend Services</h3>
+          <p class="ectime"><i class="fa-regular fa-calendar" style="color:var(--purple)"></i> Saturday, April 19 · 6 PM ET</p>
+        </div>
       </article>
       <article class="ecard reveal rd3">
         <div class="ecimg">
           <img src="https://static.wixstatic.com/media/0c8444_ca17d7824ad94efb8fe6aefa2ff994ad~mv2.jpg" alt="Kids Up Up Away" loading="lazy" width="400" height="530"/>
           <div class="ecdate"><div class="ecd-d">20</div><div class="ecd-m">Apr</div></div>
         </div>
-        <div class="ecbody"><p class="ectag">Kids Harvest</p><h3 class="ectitle">Up, Up &amp; Away Sunday</h3><p class="ectime">📅 Easter Sunday · All Services</p></div>
+        <div class="ecbody">
+          <p class="ectag">Kids Harvest</p>
+          <h3 class="ectitle">Up, Up &amp; Away Sunday</h3>
+          <p class="ectime"><i class="fa-regular fa-calendar" style="color:var(--purple)"></i> Easter Sunday · All Services</p>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- PASTOR QUOTE -->
+<!-- ─── PASTOR QUOTE ─── -->
 <section id="pquote" aria-label="Pastor's message">
   <div class="container">
     <div class="pq-inner reveal">
@@ -586,197 +708,181 @@
   </div>
 </section>
 
-<!-- MINISTRIES -->
+<!-- ─── MINISTRIES ─── -->
 <section id="ministries" aria-labelledby="minh">
   <div class="container">
     <div class="min-hdr reveal">
       <p class="sec-label">Get Connected</p>
       <h2 class="sec-title" id="minh">Ministries for every season of life</h2>
-      <p class="sec-body" style="margin-top:13px;">From kids to seniors, singles to married couples — there is a place for you to grow, connect, and serve.</p>
+      <p class="sec-body" style="margin-top:11px;">From kids to seniors, singles to married couples — there is a place for you to grow, connect, and serve.</p>
     </div>
     <div class="min-grid">
-      <div class="min-card reveal"><div class="min-ico">👶</div><h3 class="min-title">Kids Harvest</h3><p class="min-desc">A vibrant, safe environment where children encounter God's love through creative worship and Bible teaching.</p></div>
-      <div class="min-card reveal rd1"><div class="min-ico">🔥</div><h3 class="min-title">Youth Ministry</h3><p class="min-desc">Empowering the next generation to live radically for God — worship, community, and purpose-driven discipleship.</p></div>
-      <div class="min-card reveal rd2"><div class="min-ico">💍</div><h3 class="min-title">Marriage &amp; Family</h3><p class="min-desc">Resources, events, and community to help couples and families thrive in every season of life together.</p></div>
-      <div class="min-card reveal rd3"><div class="min-ico">🌍</div><h3 class="min-title">Missions &amp; Outreach</h3><p class="min-desc">Taking the gospel to the ends of the earth through global missions, local service, and community outreach.</p></div>
+      <div class="min-card reveal"><div class="min-ico"><i class="fa-solid fa-child"></i></div><h3 class="min-title">Kids Harvest</h3><p class="min-desc">A vibrant, safe environment where children encounter God's love through creative worship and Bible teaching.</p></div>
+      <div class="min-card reveal rd1"><div class="min-ico"><i class="fa-solid fa-fire-flame-curved"></i></div><h3 class="min-title">Youth Ministry</h3><p class="min-desc">Empowering the next generation to live radically for God — worship, community, and purpose-driven discipleship.</p></div>
+      <div class="min-card reveal rd2"><div class="min-ico"><i class="fa-solid fa-heart"></i></div><h3 class="min-title">Marriage &amp; Family</h3><p class="min-desc">Resources, events, and community to help couples and families thrive in every season of life together.</p></div>
+      <div class="min-card reveal rd3"><div class="min-ico"><i class="fa-solid fa-earth-americas"></i></div><h3 class="min-title">Missions &amp; Outreach</h3><p class="min-desc">Taking the gospel to the ends of the earth through global missions, local service, and community outreach.</p></div>
     </div>
   </div>
 </section>
 
-<!-- BIBLE FELLOWSHIP GROUPS -->
+<!-- ─── BIBLE FELLOWSHIP GROUPS ─── -->
 <section id="bfg" aria-labelledby="bfgh">
   <div class="container">
     <div class="bfg-hdr reveal">
       <p class="sec-label">Small Groups</p>
       <h2 class="sec-title" id="bfgh">Bible Fellowship Groups</h2>
     </div>
-    <p class="bfg-intro reveal">BFG is an interactive learning environment where you can <em>live God's Word</em> by "learning what it means and doing what it says" within a small, relational setting. Groups meet every Sunday from 9:00–9:45 AM.</p>
+    <p class="bfg-intro reveal">BFG is an interactive learning environment where you can <em>live God's Word</em> by "learning what it means and doing what it says." Groups meet every Sunday from 9:00–9:45 AM.</p>
     <div class="bfg-grid" id="bfgGrid">
-
       <article class="bfg-card reveal">
         <div class="bfg-cimg"><img src="https://whc.life/assets/site/images/biblefellowship/BFG-YOUTH.jpg" alt="Youth BFG" loading="lazy" width="600" height="450"/></div>
-        <div class="bfg-cbody">
-          <p class="bfg-cmeta">🎓 9th–12th Grade</p>
-          <h3 class="bfg-ctitle">Youth BFG</h3>
-          <p class="bfg-cdesc">Come join us as we dig into God's Word in a fun and creative way! Snacks, energy drinks, and games galore!</p>
-          <a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a>
-        </div>
+        <div class="bfg-cbody"><p class="bfg-cmeta"><i class="fa-solid fa-graduation-cap"></i> 9th–12th Grade</p><h3 class="bfg-ctitle">Youth BFG</h3><p class="bfg-cdesc">Come join us as we dig into God's Word in a fun and creative way! Snacks, energy drinks, and games galore!</p><a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a></div>
       </article>
-
       <article class="bfg-card reveal rd1">
         <div class="bfg-cimg"><img src="https://whc.life/assets/site/images/biblefellowship/BFG-COLLEGE-CAREER.jpg" alt="College & Career BFG" loading="lazy" width="600" height="450"/></div>
-        <div class="bfg-cbody">
-          <p class="bfg-cmeta">🎒 College &amp; Career</p>
-          <h3 class="bfg-ctitle">College &amp; Career BFG</h3>
-          <p class="bfg-cdesc">Come share your life experiences while getting to know others! Breakfast and coffee provided.</p>
-          <a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a>
-        </div>
+        <div class="bfg-cbody"><p class="bfg-cmeta"><i class="fa-solid fa-briefcase"></i> College &amp; Career</p><h3 class="bfg-ctitle">College &amp; Career BFG</h3><p class="bfg-cdesc">Come share your life experiences while getting to know others! Breakfast and coffee provided.</p><a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a></div>
       </article>
-
       <article class="bfg-card reveal rd2">
         <div class="bfg-cimg"><img src="https://whc.life/assets/site/images/biblefellowship/BFG-PRE-ELEMENTARY.jpg" alt="Pre-Elementary Parents BFG" loading="lazy" width="600" height="450"/></div>
-        <div class="bfg-cbody">
-          <p class="bfg-cmeta">👶 Parents of Young Kids</p>
-          <h3 class="bfg-ctitle">Pre-Elementary Parents BFG</h3>
-          <p class="bfg-cdesc">Come hear how God directs us as parents and get support from those in the same season of life! Breakfast and coffee provided.</p>
-          <a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a>
-        </div>
+        <div class="bfg-cbody"><p class="bfg-cmeta"><i class="fa-solid fa-baby"></i> Parents of Young Kids</p><h3 class="bfg-ctitle">Pre-Elementary Parents BFG</h3><p class="bfg-cdesc">Come hear how God directs us as parents and get support from those in the same season of life! Breakfast and coffee provided.</p><a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a></div>
       </article>
-
       <article class="bfg-card bfg-hidden reveal">
         <div class="bfg-cimg"><img src="https://whc.life/assets/site/images/biblefellowship/BFG-MIDDLE-HIGH-SCHOOLERS.jpg" alt="Teen Parents BFG" loading="lazy" width="600" height="450"/></div>
-        <div class="bfg-cbody">
-          <p class="bfg-cmeta">🏫 Parents of Teens</p>
-          <h3 class="bfg-ctitle">Teen Parents BFG</h3>
-          <p class="bfg-cdesc">Life is busy with older children, but we all deserve time together. Join your fellow teen parents as we do life together! Breakfast and coffee provided.</p>
-          <a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a>
-        </div>
+        <div class="bfg-cbody"><p class="bfg-cmeta"><i class="fa-solid fa-school"></i> Parents of Teens</p><h3 class="bfg-ctitle">Teen Parents BFG</h3><p class="bfg-cdesc">Life is busy with older children, but we all deserve time together. Join your fellow teen parents as we do life together! Breakfast and coffee provided.</p><a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a></div>
       </article>
-
       <article class="bfg-card bfg-hidden reveal rd1">
         <div class="bfg-cimg"><img src="https://whc.life/assets/site/images/biblefellowship/BFG-EMPTY-NESTERS.jpg" alt="Empty Nesters BFG" loading="lazy" width="600" height="450"/></div>
-        <div class="bfg-cbody">
-          <p class="bfg-cmeta">🏡 Empty Nesters</p>
-          <h3 class="bfg-ctitle">Empty Nesters BFG</h3>
-          <p class="bfg-cdesc">The house is a little quieter now — a perfect time to connect. Let's share stories and dig into God's Word in this new season. Breakfast and coffee provided.</p>
-          <a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a>
-        </div>
+        <div class="bfg-cbody"><p class="bfg-cmeta"><i class="fa-solid fa-house"></i> Empty Nesters</p><h3 class="bfg-ctitle">Empty Nesters BFG</h3><p class="bfg-cdesc">The house is a little quieter now — a perfect time to connect. Share stories and dig into God's Word in this new season. Breakfast and coffee provided.</p><a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a></div>
       </article>
-
       <article class="bfg-card bfg-hidden reveal rd2">
         <div class="bfg-cimg"><img src="https://whc.life/assets/site/images/biblefellowship/BFG-LEGACY.jpg" alt="Legacy BFG" loading="lazy" width="600" height="450"/></div>
-        <div class="bfg-cbody">
-          <p class="bfg-cmeta">👑 Legacy</p>
-          <h3 class="bfg-ctitle">Legacy BFG</h3>
-          <p class="bfg-cdesc">Wisdom prevails, as we teach and train the younger generation. Join your fellow Legacy members as we dig deep into the Word! Breakfast and coffee provided.</p>
-          <a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a>
-        </div>
+        <div class="bfg-cbody"><p class="bfg-cmeta"><i class="fa-solid fa-crown"></i> Legacy</p><h3 class="bfg-ctitle">Legacy BFG</h3><p class="bfg-cdesc">Wisdom prevails, as we teach and train the younger generation. Join your fellow Legacy members as we dig deep into the Word! Breakfast and coffee provided.</p><a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a></div>
       </article>
-
       <article class="bfg-card bfg-hidden reveal">
         <div class="bfg-cimg"><img src="https://whc.life/assets/site/images/biblefellowship/KIDS.jpg" alt="Kids BFG" loading="lazy" width="600" height="450"/></div>
-        <div class="bfg-cbody">
-          <p class="bfg-cmeta">🎨 Kids Harvest</p>
-          <h3 class="bfg-ctitle">Kids Harvest BFG</h3>
-          <p class="bfg-cdesc">Exciting monthly themes filled with fun and unforgettable moments! Creative activities and plenty of ways for kids to connect and grow.</p>
-          <a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a>
-        </div>
+        <div class="bfg-cbody"><p class="bfg-cmeta"><i class="fa-solid fa-star"></i> Kids Harvest</p><h3 class="bfg-ctitle">Kids Harvest BFG</h3><p class="bfg-cdesc">Exciting monthly themes filled with fun and unforgettable moments! Creative activities and plenty of ways for kids to connect and grow.</p><a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a></div>
       </article>
-
       <article class="bfg-card bfg-hidden reveal rd1">
         <div class="bfg-cimg"><img src="https://whc.life/assets/site/images/biblefellowship/GEN-H.jpg" alt="Gen-H BFG" loading="lazy" width="600" height="450"/></div>
-        <div class="bfg-cbody">
-          <p class="bfg-cmeta">🎮 Middle School</p>
-          <h3 class="bfg-ctitle">Gen-H BFG</h3>
-          <p class="bfg-cdesc">Middle school just got better. Come hang with us for beats, games, and nonstop fun. Bring your friends and get ready for a whole vibe.</p>
-          <a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a>
-        </div>
+        <div class="bfg-cbody"><p class="bfg-cmeta"><i class="fa-solid fa-gamepad"></i> Middle School</p><h3 class="bfg-ctitle">Gen-H BFG</h3><p class="bfg-cdesc">Middle school just got better. Come hang with us for beats, games, and nonstop fun. Bring your friends and get ready for a whole vibe.</p><a href="https://forms.whc.life/forms_v2/adult-bible-fellowship" target="_blank" rel="noopener" class="bfg-join">Join Now</a></div>
       </article>
-
     </div>
-    <div class="bfg-smw"><button id="bfgBtn" aria-expanded="false">Show More Groups</button></div>
+    <div class="bfg-btns">
+      <button id="bfgMore" aria-expanded="false">Show More Groups</button>
+      <button id="bfgLess" aria-expanded="true">Show Fewer Groups</button>
+    </div>
   </div>
 </section>
 
-<!-- VISIT -->
+<!-- ─── GALLERY ─── -->
+<section id="gallery" aria-labelledby="galh">
+  <div class="container">
+    <div class="gal-hdr reveal">
+      <p class="sec-label">Our Community</p>
+      <h2 class="sec-title" id="galh">Life at World Harvest</h2>
+      <p class="sec-body" style="margin:10px auto 0;text-align:center;">A glimpse into our worship, community, and the moments that define who we are.</p>
+    </div>
+    <div class="gal-masonry" id="galMasonry"></div>
+    <div class="gal-btns">
+      <button id="galMore" class="gal-btn"><i class="fa-solid fa-images" style="margin-right:7px;"></i>Show More</button>
+      <button id="galLess" class="gal-btn"><i class="fa-solid fa-chevron-up" style="margin-right:7px;"></i>Show Fewer</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LIGHTBOX ─── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+  <img id="lbImg" src="" alt="Gallery image"/>
+  <button class="lb-next" id="lbNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<!-- ─── VISIT ─── -->
 <section id="visit" aria-labelledby="vh">
   <div class="container">
     <div class="vgrid">
       <div class="reveal">
         <p class="sec-label">Plan Your Visit</p>
         <h2 class="sec-title" id="vh">We can't wait<br/>to meet you</h2>
-        <p class="sec-body" style="margin-top:20px;">Service times, parking, kids check-in, and everything you need for your first Sunday at World Harvest Church.</p>
-        <ul class="vlist" style="margin-top:36px;" aria-label="Service information">
-          <li class="vitem"><div class="vico" aria-hidden="true">📍</div><div><p class="vlbl">Location</p><p class="vval">4595 Gender Rd., Canal Winchester, OH</p></div></li>
-          <li class="vitem"><div class="vico" aria-hidden="true">🕐</div><div><p class="vlbl">Service Times</p><p class="vval">Sundays 10 AM ET · Wednesdays 7 PM ET</p></div></li>
-          <li class="vitem"><div class="vico" aria-hidden="true">✉</div><div><p class="vlbl">Contact</p><p class="vval"><a href="tel:6148371990">(614) 837-1990</a><br/><a href="mailto:webmaster@whc.life">webmaster@whc.life</a></p></div></li>
-          <li class="vitem"><div class="vico" aria-hidden="true">❤</div><div><p class="vlbl">What to Expect</p><p class="vval">Family-friendly · Spirit-filled · Multi-generational</p></div></li>
+        <p class="sec-body" style="margin-top:18px;">Service times, parking, kids check-in, and everything you need for your first Sunday.</p>
+        <ul class="vlist" style="margin-top:30px;" aria-label="Service information">
+          <li class="vitem"><div class="vico"><i class="fa-solid fa-location-dot"></i></div><div><p class="vlbl">Location</p><p class="vval">4595 Gender Rd., Canal Winchester, OH</p></div></li>
+          <li class="vitem"><div class="vico"><i class="fa-regular fa-clock"></i></div><div><p class="vlbl">Service Times</p><p class="vval">Sundays 10 AM ET · Wednesdays 7 PM ET</p></div></li>
+          <li class="vitem"><div class="vico"><i class="fa-solid fa-phone"></i></div><div><p class="vlbl">Contact</p><p class="vval"><a href="tel:6148371990">(614) 837-1990</a><br/><a href="mailto:webmaster@whc.life">webmaster@whc.life</a></p></div></li>
+          <li class="vitem"><div class="vico"><i class="fa-solid fa-hands-praying"></i></div><div><p class="vlbl">What to Expect</p><p class="vval">Family-friendly · Spirit-filled · Multi-generational</p></div></li>
         </ul>
-        <a href="https://whc.life" target="_blank" rel="noopener" class="btn-p ac">I'm New Here</a>
+        <a href="https://whc.life" target="_blank" rel="noopener" class="btn-p ac" style="margin-top:8px;">
+          <i class="fa-solid fa-calendar-plus" style="margin-right:6px;"></i>I'm New Here
+        </a>
       </div>
-      <div class="vmap reveal rd2">
-        <div class="vmap-in">
-          <div class="vgrd" aria-hidden="true"></div>
-          <div class="vpin" aria-hidden="true">✦</div>
-          <div class="vadr"><p class="vadr-n">World Harvest Church</p><p class="vadr-s">4595 Gender Rd. · Canal Winchester, OH 43110</p></div>
+      <div class="reveal rd2">
+        <div class="vmap-wrap">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164625.72197550282!2d-83.05399128000789!3d39.94206075076837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88387c84e6a7b357%3A0xe170fcc8cf231e4e!2s4595%20Gender%20Rd%2C%20Canal%20Winchester%2C%20OH%2043110%2C%20USA!5e0!3m2!1sen!2ske!4v1776419564113!5m2!1sen!2ske" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="World Harvest Church location map"></iframe>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GIVE -->
+<!-- ─── GIVE ─── -->
 <section id="give" aria-labelledby="gh">
   <div class="gbg" aria-hidden="true"></div>
   <div class="container">
     <div class="gin reveal">
       <p class="sec-label">Partner With Us</p>
       <h2 class="sec-title" id="gh">Your generosity<br/>changes lives</h2>
-      <p class="sec-body" style="margin-top:20px;">Every gift fuels miracles, supports local families, and sends the gospel to the nations. Your generosity is an act of faith that creates lasting impact.</p>
-      <div class="gacts" style="margin-top:40px;">
-        <a href="https://whc.life/donate" target="_blank" rel="noopener" class="btn-p ac">Give Online</a>
-        <a href="https://whc.life/donate" target="_blank" rel="noopener" class="btn-p ol">Learn About Giving</a>
+      <p class="sec-body" style="margin-top:18px;">Every gift fuels miracles, supports local families, and sends the gospel to the nations. Your generosity is an act of faith that creates lasting impact.</p>
+      <div class="gacts" style="margin-top:36px;">
+        <a href="https://whc.life/donate" target="_blank" rel="noopener" class="btn-p ac">
+          <i class="fa-solid fa-circle-dollar-to-slot" style="margin-right:6px;"></i>Give Online
+        </a>
+        <a href="https://whc.life/volunteer" target="_blank" rel="noopener" class="btn-p ol">
+          <i class="fa-solid fa-hands-helping" style="margin-right:6px;"></i>Volunteer
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL -->
+<!-- ─── SOCIAL ─── -->
 <section id="socstrip" aria-labelledby="soch">
   <div class="container">
     <div class="soc-hdr reveal">
       <p class="sec-label">Follow Along</p>
-      <h2 class="sec-title" id="soch" style="font-size:1.45rem;margin-bottom:6px;">Stay connected with The Harv</h2>
+      <h2 class="sec-title" id="soch">Stay connected with The Harv</h2>
+      <p>Follow Pastor Rod and World Harvest Church across social media.</p>
     </div>
-  </div>
-  <div class="socgrid" aria-label="Social media preview">
-    <div class="soctile" style="background:linear-gradient(135deg,#14102a,#1e1040)"><div class="soctov"></div><span>🙏</span></div>
-    <div class="soctile" style="background:linear-gradient(135deg,#0d1020,#181030)"><div class="soctov"></div><span>✦</span></div>
-    <div class="soctile" style="background:linear-gradient(135deg,#1a1030,#2a1858)"><div class="soctov"></div><span>🔥</span></div>
-    <div class="soctile" style="background:linear-gradient(135deg,#141020,#1a1038)"><div class="soctov"></div><span>📖</span></div>
-    <div class="soctile" style="background:linear-gradient(135deg,#0d1020,#141430)"><div class="soctov"></div><span>🌍</span></div>
-  </div>
-  <div style="text-align:center;padding:26px 0 0;" class="reveal">
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
-      <a href="https://youtube.com/channel/rodparsley" target="_blank" rel="noopener" class="btn-solid drk" style="display:inline-flex;align-items:center;gap:7px;">▶ YouTube</a>
-      <a href="http://facebook.com/rodparsley/" target="_blank" rel="noopener" class="btn-solid drk" style="display:inline-flex;align-items:center;gap:7px;">f Facebook</a>
-      <a href="https://x.com/RealRodParsley" target="_blank" rel="noopener" class="btn-solid drk" style="display:inline-flex;align-items:center;gap:7px;">𝕏 Twitter/X</a>
+    <div class="soc-grid reveal">
+      <div class="soc-tile"><img src="https://ik.imagekit.io/vddpcxj7e/whc/DSC06964.JPG?tr=f-auto,q-auto,w-400" alt="WHC community" loading="lazy"/><div class="soc-tile-overlay"></div></div>
+      <div class="soc-tile"><img src="https://ik.imagekit.io/vddpcxj7e/whc/DSC00690.JPG?tr=f-auto,q-auto,w-400" alt="WHC worship" loading="lazy"/><div class="soc-tile-overlay"></div></div>
+      <div class="soc-tile"><img src="https://ik.imagekit.io/vddpcxj7e/whc/DSC00552.JPG?tr=f-auto,q-auto,w-400" alt="WHC gathering" loading="lazy"/><div class="soc-tile-overlay"></div></div>
+      <div class="soc-tile"><img src="https://ik.imagekit.io/vddpcxj7e/whc/DSC08359.jpeg?tr=f-auto,q-auto,w-400" alt="WHC service" loading="lazy"/><div class="soc-tile-overlay"></div></div>
+      <div class="soc-tile"><img src="https://ik.imagekit.io/vddpcxj7e/whc/F79A0470.JPG?tr=f-auto,q-auto,w-400" alt="WHC event" loading="lazy"/><div class="soc-tile-overlay"></div></div>
+      <div class="soc-tile"><img src="https://ik.imagekit.io/vddpcxj7e/whc/DSC08701.JPG?tr=f-auto,q-auto,w-400" alt="WHC praise" loading="lazy"/><div class="soc-tile-overlay"></div></div>
+    </div>
+    <div class="soc-icon-bar reveal" style="margin-top:32px;">
+      <a href="https://www.youtube.com/@rodparsley" target="_blank" rel="noopener" class="soc-icon-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.facebook.com/rodparsley" target="_blank" rel="noopener" class="soc-icon-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/rodparsley" target="_blank" rel="noopener" class="soc-icon-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://x.com/RealRodParsley" target="_blank" rel="noopener" class="soc-icon-btn" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ─── FOOTER ─── -->
 <footer id="footer" role="contentinfo">
   <div class="container">
     <div class="ftop">
       <div>
-        <div class="flogo"><img src="https://elro-images.s3.us-east-2.amazonaws.com/tosm/WHC+Wheat+Logo+(1).png" alt="World Harvest Church" width="140" height="44"/></div>
+        <div class="flogo"><img src="https://elro-images.s3.us-east-2.amazonaws.com/tosm/WHC+Wheat+Logo+(1).png" alt="World Harvest Church" width="130" height="40"/></div>
         <p class="fbname">World Harvest Church</p>
         <p class="ftagline">A house of miracles for every generation.<br/>A home for world-changers.</p>
         <div class="fsocs" aria-label="Social media links">
-          <a href="https://youtube.com/channel/rodparsley" target="_blank" rel="noopener" class="fsocia" aria-label="YouTube">▶</a>
-          <a href="http://facebook.com/rodparsley/" target="_blank" rel="noopener" class="fsocia" aria-label="Facebook">f</a>
-          <a href="https://x.com/RealRodParsley" target="_blank" rel="noopener" class="fsocia" aria-label="X/Twitter">𝕏</a>
+          <a href="https://www.youtube.com/@rodparsley" target="_blank" rel="noopener" class="fsocia" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.facebook.com/rodparsley" target="_blank" rel="noopener" class="fsocia" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/rodparsley" target="_blank" rel="noopener" class="fsocia" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://x.com/RealRodParsley" target="_blank" rel="noopener" class="fsocia" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
       </div>
       <nav aria-label="Quick links">
@@ -792,6 +898,7 @@
         <p class="fcoltitle">Connect</p>
         <ul class="flinks">
           <li><a href="#bfg">Bible Fellowship Groups</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#events">Events</a></li>
           <li><a href="#visit">Plan a Visit</a></li>
           <li><a href="https://online.whc.life/" target="_blank" rel="noopener">Watch Live</a></li>
@@ -803,7 +910,7 @@
         <ul class="flinks">
           <li><a href="tel:6148371990">(614) 837-1990</a></li>
           <li><a href="mailto:webmaster@whc.life">webmaster@whc.life</a></li>
-          <li style="color:rgba(255,255,255,.22);font-size:13px;line-height:1.6;">4595 Gender Rd.<br/>Canal Winchester, OH 43110</li>
+          <li><a href="https://maps.app.goo.gl/6sUwTmPKDDXbqZ5n8" target="_blank" rel="noopener" style="color:rgba(255,255,255,.36);font-size:13px;line-height:1.6;">4595 Gender Rd.<br/>Canal Winchester, OH 43110</a></li>
         </ul>
       </address>
     </div>
@@ -819,78 +926,264 @@
 </footer>
 
 <script>
-  /* NAV scroll */
-  const nav = document.getElementById('nav');
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 55);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+/* ─── BFG DATA (for search) ─── */
+const BFG_GROUPS = [
+  {name:'Youth BFG',demo:'9th–12th Grade',icon:'fa-graduation-cap'},
+  {name:'College & Career BFG',demo:'College & Career',icon:'fa-briefcase'},
+  {name:'Pre-Elementary Parents BFG',demo:'Parents of Young Kids',icon:'fa-baby'},
+  {name:'Teen Parents BFG',demo:'Parents of Teens',icon:'fa-school'},
+  {name:'Empty Nesters BFG',demo:'Empty Nesters',icon:'fa-house'},
+  {name:'Legacy BFG',demo:'Legacy',icon:'fa-crown'},
+  {name:'Kids Harvest BFG',demo:'Kids Harvest',icon:'fa-star'},
+  {name:'Gen-H BFG',demo:'Middle School',icon:'fa-gamepad'},
+];
 
-  /* Mute toggle */
-  const vid = document.getElementById('heroVid');
-  const muteBtn = document.getElementById('muteBtn');
-  let muted = true;
-  muteBtn.addEventListener('click', () => {
-    muted = !muted;
-    vid.muted = muted;
-    muteBtn.textContent = muted ? '🔇' : '🔊';
-    muteBtn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
-  });
+/* ─── GALLERY IMAGES ─── */
+const GALLERY_IMGS = [
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC06964.JPG?tr=f-auto,q-auto,w-1200',alt:'WHC Community'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC06031.jpg?tr=f-auto,q-auto,w-1200',alt:'WHC Service'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/nathan-dumlao-P5MXtYfgmmw-unsplash.jpg?tr=f-auto,q-auto,w-1200',alt:'Worship'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC00690.JPG?tr=f-auto,q-auto,w-1200',alt:'Gathering'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC00483.JPG?tr=f-auto,q-auto,w-1200',alt:'Praise'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC00552.JPG?tr=f-auto,q-auto,w-1200',alt:'Worship Night'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC00645.JPG?tr=f-auto,q-auto,w-1200',alt:'Church Life'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC00682.JPG?tr=f-auto,q-auto,w-1200',alt:'Community'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/Photo%20Nov%2001%202019%2C%2011%2057%2028%20PM%20(1).jpg?tr=f-auto,q-auto,w-1200',alt:'Night Service'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC08359.jpeg?tr=f-auto,q-auto,w-1200',alt:'Service'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC08549.JPG?tr=f-auto,q-auto,w-1200',alt:'WHC Event'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC08701.JPG?tr=f-auto,q-auto,w-1200',alt:'Praise'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC08742.JPG?tr=f-auto,q-auto,w-1200',alt:'Worship'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/DSC08736.JPG?tr=f-auto,q-auto,w-1200',alt:'Music'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/F79A0470.JPG?tr=f-auto,q-auto,w-1200',alt:'Congregation'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/F79A0562.JPG?tr=f-auto,q-auto,w-1200',alt:'Service'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/Photo%20Oct%2001%2C%209%2047%2024%20PM.jpg?tr=f-auto,q-auto,w-1200',alt:'October Service'},
+  {src:'https://ik.imagekit.io/vddpcxj7e/whc/Photo%20Sep%2029%2C%203%2038%2019%20PM.jpg?tr=f-auto,q-auto,w-1200',alt:'September Event'},
+];
+const GALLERY_INITIAL = 9;
 
-  /* Marquee */
-  const items = ['Sundays 10 AM ET','Wednesdays 7 PM ET','Canal Winchester, Ohio','In Person & Online','World Harvest Church','A House of Prayer for All Nations'];
-  const track = document.getElementById('mtrack');
-  track.innerHTML = [...items,...items,...items,...items].map(t =>
-    `<span class="mitem">${t}<span class="mdot"></span></span>`
-  ).join('');
+/* ─── NAV SCROLL ─── */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 55);
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
 
-  /* Mobile drawer */
-  const hamBtn = document.getElementById('hamBtn');
-  const drawer = document.getElementById('mob-drawer');
-  function toggleDrawer(open) {
-    hamBtn.classList.toggle('open', open);
-    drawer.classList.toggle('open', open);
-    hamBtn.setAttribute('aria-expanded', String(open));
-    document.body.style.overflow = open ? 'hidden' : '';
+/* ─── MUTE ─── */
+const vid = document.getElementById('heroVid');
+const muteBtn = document.getElementById('muteBtn');
+let muted = true;
+muteBtn.addEventListener('click', () => {
+  muted = !muted;
+  vid.muted = muted;
+  muteBtn.innerHTML = muted ? '<i class="fa-solid fa-volume-xmark"></i>' : '<i class="fa-solid fa-volume-high"></i>';
+  muteBtn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
+});
+
+/* ─── MARQUEE ─── */
+const stripItems = ['Sundays 10 AM ET','Wednesdays 7 PM ET','Canal Winchester, Ohio','In Person & Online','World Harvest Church','A House of Prayer for All Nations'];
+const mtrack = document.getElementById('mtrack');
+mtrack.innerHTML = [...stripItems,...stripItems,...stripItems,...stripItems].map(t =>
+  `<span class="mitem">${t}<span class="mdot"></span></span>`
+).join('');
+
+/* ─── MOBILE DRAWER ─── */
+const hamBtn = document.getElementById('hamBtn');
+const drawer = document.getElementById('mob-drawer');
+function toggleDrawer(open) {
+  hamBtn.classList.toggle('open', open);
+  drawer.classList.toggle('open', open);
+  hamBtn.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamBtn.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+
+/* ─── SEARCH ─── */
+const searchBtn = document.getElementById('searchBtn');
+const searchOverlay = document.getElementById('search-overlay');
+const searchClose = document.getElementById('searchClose');
+const searchInput = document.getElementById('searchInput');
+const suggestionsEl = document.getElementById('searchSuggestions');
+
+function openSearch() {
+  searchOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => searchInput.focus(), 100);
+  renderSuggestions('');
+}
+function closeSearch() {
+  searchOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+  searchInput.value = '';
+}
+
+searchBtn.addEventListener('click', openSearch);
+searchClose.addEventListener('click', closeSearch);
+
+function renderSuggestions(query) {
+  const q = query.toLowerCase().trim();
+  const matches = q ? BFG_GROUPS.filter(g => g.name.toLowerCase().includes(q) || g.demo.toLowerCase().includes(q)) : BFG_GROUPS;
+  if (!matches.length) {
+    suggestionsEl.innerHTML = '<p style="padding:16px 18px;color:rgba(255,255,255,.3);font-size:14px;">No groups found.</p>';
+    return;
   }
-  hamBtn.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
-  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleDrawer(false); });
+  suggestionsEl.innerHTML = '<p class="search-sug-label">Bible Fellowship Groups</p>' +
+    matches.map((g,i) => `<div class="search-sug-item" role="option" tabindex="0" data-idx="${i}" aria-label="${g.name}"><i class="fa-solid ${g.icon}"></i><div><strong style="display:block;font-size:14px;color:#fff;">${g.name}</strong><span style="font-size:11px;color:rgba(255,255,255,.4);">${g.demo}</span></div></div>`).join('');
 
-  /* BFG Show More */
-  const bfgBtn = document.getElementById('bfgBtn');
-  const hiddenCards = document.querySelectorAll('.bfg-hidden');
-  bfgBtn.addEventListener('click', () => {
-    hiddenCards.forEach(c => {
-      c.classList.remove('bfg-hidden');
-      observer.observe(c);
+  suggestionsEl.querySelectorAll('.search-sug-item').forEach(item => {
+    item.addEventListener('click', () => {
+      closeSearch();
+      setTimeout(() => {
+        const bfg = document.getElementById('bfg');
+        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+        window.scrollTo({top: bfg.getBoundingClientRect().top + window.scrollY - navH, behavior:'smooth'});
+      }, 200);
     });
-    bfgBtn.classList.add('hide');
+    item.addEventListener('keydown', e => { if (e.key === 'Enter') item.click(); });
   });
+}
 
-  /* IntersectionObserver for reveal */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+searchInput.addEventListener('input', () => renderSuggestions(searchInput.value));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
 
-  document.querySelectorAll('.reveal').forEach(el => {
-    if (!el.closest('.bfg-hidden')) observer.observe(el);
+/* ─── PLAYLIST TABS ─── */
+document.querySelectorAll('.pl-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.pl-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.pl-player').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    document.getElementById('pl-' + tab.dataset.pl).classList.add('active');
   });
+});
 
-  /* Smooth anchor scroll */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href').slice(1);
-      if (!id) return;
-      const target = document.getElementById(id);
-      if (target) {
-        e.preventDefault();
-        const h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - h, behavior: 'smooth' });
-      }
-    });
+/* ─── BFG SHOW MORE / FEWER ─── */
+const bfgMore = document.getElementById('bfgMore');
+const bfgLess = document.getElementById('bfgLess');
+const bfgHiddenCards = Array.from(document.querySelectorAll('.bfg-hidden'));
+
+bfgMore.addEventListener('click', () => {
+  bfgHiddenCards.forEach(c => {
+    c.classList.remove('bfg-hidden');
+    observer.observe(c);
   });
+  bfgMore.style.display = 'none';
+  bfgLess.style.display = 'inline-block';
+});
+
+bfgLess.addEventListener('click', () => {
+  bfgHiddenCards.forEach(c => {
+    c.classList.add('bfg-hidden');
+    c.classList.remove('visible');
+  });
+  bfgMore.style.display = 'inline-block';
+  bfgLess.style.display = 'none';
+  // Scroll back to BFG section
+  const sec = document.getElementById('bfg');
+  const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+  window.scrollTo({top: sec.getBoundingClientRect().top + window.scrollY - navH, behavior:'smooth'});
+});
+
+/* ─── GALLERY BUILD ─── */
+const galMasonry = document.getElementById('galMasonry');
+const galMore = document.getElementById('galMore');
+const galLess = document.getElementById('galLess');
+let galExpanded = false;
+
+function buildGallery() {
+  galMasonry.innerHTML = '';
+  GALLERY_IMGS.forEach((img, i) => {
+    const div = document.createElement('div');
+    div.className = 'gal-item' + (i >= GALLERY_INITIAL ? ' gal-hidden' : '');
+    div.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy"/><div class="gal-item-overlay"></div>`;
+    div.addEventListener('click', () => openLightbox(i));
+    galMasonry.appendChild(div);
+  });
+}
+
+buildGallery();
+
+galMore.addEventListener('click', () => {
+  document.querySelectorAll('.gal-item.gal-hidden').forEach(el => el.classList.remove('gal-hidden'));
+  galMore.style.display = 'none';
+  galLess.style.display = 'inline-block';
+  galExpanded = true;
+});
+
+galLess.addEventListener('click', () => {
+  document.querySelectorAll('.gal-item').forEach((el, i) => {
+    if (i >= GALLERY_INITIAL) el.classList.add('gal-hidden');
+  });
+  galMore.style.display = 'inline-block';
+  galLess.style.display = 'none';
+  galExpanded = false;
+  const sec = document.getElementById('gallery');
+  const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+  window.scrollTo({top: sec.getBoundingClientRect().top + window.scrollY - navH, behavior:'smooth'});
+});
+
+/* ─── LIGHTBOX ─── */
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbClose = document.getElementById('lbClose');
+const lbPrev = document.getElementById('lbPrev');
+const lbNext = document.getElementById('lbNext');
+let lbCurrent = 0;
+
+function openLightbox(idx) {
+  lbCurrent = idx;
+  lbImg.src = GALLERY_IMGS[idx].src;
+  lbImg.alt = GALLERY_IMGS[idx].alt;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+lbClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+lbPrev.addEventListener('click', () => {
+  lbCurrent = (lbCurrent - 1 + GALLERY_IMGS.length) % GALLERY_IMGS.length;
+  lbImg.src = GALLERY_IMGS[lbCurrent].src;
+  lbImg.alt = GALLERY_IMGS[lbCurrent].alt;
+});
+lbNext.addEventListener('click', () => {
+  lbCurrent = (lbCurrent + 1) % GALLERY_IMGS.length;
+  lbImg.src = GALLERY_IMGS[lbCurrent].src;
+  lbImg.alt = GALLERY_IMGS[lbCurrent].alt;
+});
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbPrev.click();
+  if (e.key === 'ArrowRight') lbNext.click();
+});
+
+/* ─── INTERSECTION OBSERVER ─── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, {threshold:0.08, rootMargin:'0px 0px -28px 0px'});
+
+document.querySelectorAll('.reveal').forEach(el => {
+  if (!el.closest('.bfg-hidden')) observer.observe(el);
+});
+
+/* ─── SMOOTH ANCHOR SCROLL ─── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      if (drawer.classList.contains('open')) toggleDrawer(false);
+      const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+      window.scrollTo({top: target.getBoundingClientRect().top + window.scrollY - navH, behavior:'smooth'});
+    }
+  });
+});
 </script>
 </body>
 </html>
